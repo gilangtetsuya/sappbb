@@ -1,0 +1,9 @@
+Options -MultiViews
+RewriteEngine On 
+
+RewriteBase /sampel/views
+
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !-f
+
+RewriteRule ^(.*)$ $1.php [QSA]
