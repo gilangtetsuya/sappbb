@@ -6,8 +6,10 @@
     <meta name='viewport' content='width=device-width, minimum-scale=1'>
     <title>Datatables</title>
     <link rel='stylesheet' href='./assets/bootstrap/css/bootstrap.min.css'>
-     <link rel="stylesheet" href="./assets/plugin/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/plugin/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/plugin/data-table/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/plugin/responsive-datatable/fixedHeader.bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/plugin/responsive-datatable/responsive.bootstrap.min.css">
     <style>
       .container-fluid {
          margin-top: 20px; 
@@ -37,7 +39,6 @@
            }
            table.table > tbody > tr > td {
               font-size: 64%; 
-              text-align: center;
               text-transform: uppercase;
            }  
       }
@@ -53,7 +54,7 @@
          jQuery Datatables  
        </div>
        <div class="panel-body">
-        <table class="table table-striped table-hover table-bordered responsive no-wrap dataTables_1" cellspacing="0" width="100%">
+        <table class="table table-striped table-hover table-bordered nowrap dataTables_1" cellspacing="0" width="100%">
           <thead>
             <tr>
                 <th>No.</th>
@@ -119,15 +120,19 @@
   <script src="./assets/bootstrap/js/bootstrap.min.js"></script>
   <script src="./assets/plugin/data-table/js/jquery.dataTables.min.js"></script>
   <script src="./assets/plugin/data-table/js/dataTables.bootstrap.min.js"></script>
+  <script src="./assets/plugin/responsive-datatable/dataTables.fixedHeader.min.js"></script>
+  <script src="./assets/plugin/responsive-datatable/dataTables.responsive.min.js"></script>
+  <script src="./assets/plugin/responsive-datatable/responsive.bootstrap.min.js"></script>
   <script>
     $(document).ready(function() {
 
-        $('.dataTables_1').DataTable({
-            responsive: true,
-            "processing": true,
-            "serverside": true,
-            "ajax": "data.php"
-        });
+        var table =  $('.dataTables_1').DataTable({
+                        responsive: true,
+                        "processing": true,
+                        "serverside": true,
+                        "ajax": "data.php"
+                      });
+        new $.fn.dataTable.FixedHeader( table );             
         
         $(document).on('click', '#dokumen', function () {
             var dataId = $(this).attr('data-id');
