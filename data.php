@@ -1,64 +1,82 @@
 <?php 
+require_once 'app/database/db_oci.php';
 
-$aColumns = array('');
+$sql = "SELECT a.thn_pelayanan, a.bundel_pelayanan, a.no_urut_pelayanan, b.nama_pemohon, b.alamat_pemohon, b.keterangan_pst, b.catatan_pst, b.status_kolektif, b.tgl_terima_dokumen_wp, b.tgl_perkiraan_selesai, b.nip_penerima, a.kd_propinsi_pemohon, a.kd_dati2_pemohon, a.kd_kecamatan_pemohon, a.kd_kelurahan_pemohon, a.kd_blok_pemohon, a.no_urut_pemohon, a.kd_jns_op_pemohon, a.kd_jns_pelayanan, a.thn_pajak_permohonan, a.status_selesai, a.kd_seksi_berkas FROM pst_detail a JOIN pst_permohonan b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.kd_jns_pelayanan IN ('01','02','03') AND a.kd_kecamatan_pemohon IN ('140','100','080','090') AND a.thn_pelayanan = '2016' ORDER BY a.thn_pelayanan ASC";
 
-$sIndexColumn = "a.THN_PELAYANAN"; 
+$query = $link->prepare($sql);
 
-$sTables = array('');
+$query->execute();
 
-$gaSql['user'] = "pbb";
-$gaSql['password'] = "pbb";
-$gaSql['schema'] = "orcl";
-$gaSql['port'] = "1521";
-$gaSql['server'] = "127.0.0.1";
+$rows = $query->fetchAll(PDO::FETCH_BOTH);
 
-$connection_string = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)
-(HOST = {$gaSql['server']})(PORT = {$gaSql['port']})))(CONNECT_DATA=(SID={$gaSql['schema']})))";
+$no = 1;
 
-$conn = oci_connect($gaSql['user'], $gaSql['password'], $connection_string);
-if (!$conn) {
-    $e = oci_error();
-    trigger_error(htmlentities($e['message'], ENT_QUOTES), E_USER_ERROR);
-}
+$output = array(
+    "data" => array()    
+);
 
-$sLimit = "";
-if (isset( $_GET['iDisplayStart'] ) && $_GET['iDisplayLength'] != '-1') {
-    
-    $sLimit = "WHERE rowsNumerator BETWEEN :iDisplayStart AND :iDisplayEnd";
-
-}
-
-if (isset( $_GET['iShortCol_0'] )) 
-{
-    $sOrder = "ORDER BY ";
-
-    for ($i = 0; $i<intval( $_GET['iShortingCols'] ); $i++) 
-    {
-        if ($_GET['bShortable_'.intval($_GET['iShortCol_'.$i])] == 'true') 
-        {
-            $sOrder .= $aColumns[ intval($_GET['iShortCol_'.$i]) ];
-
-            if (strcasecmp(( $_GET['sSortDir_'.$i] ), "asc") == 0)
-            {
-                $sOrder .=" asc, ";
-            } else
-            {
-                $sOrder .=" desc, ";
-            } 
-        }
-
-        $sOrder = substr_replace( $sOrder, "", -2 );
-
-        if ( $sOrder == "ORDER BY" )
-        {
-    
-            $sOrder = "ORDER BY ".$sIndexColumn;
-            
-        } 
+foreach ($rows as $row) {
+    if ($row['STATUS_KOLEKTIF'] == 0) {
+        $statkol = "INDIVIDU";
+    } 
+    if ($row['STATUS_KOLEKTIF'] == 1) {
+        $statkol = "MASSAL/KOLEKTIF";
     }
-
-    
+    if ($row['KD_JNS_PELAYANAN'] == '01') {
+        $txt_permohonan = 'pendaftaran data baru';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '02') {
+        $txt_permohonan = 'mutasi objek/subjek';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '03') {
+        $txt_permohonan = 'pembetulan sppt/skp/stp';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '04') {
+        $txt_permohonan = 'pembatalan sppt/skp';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '05') {
+        $txt_permohonan = 'salinan sppt/skp';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '06') {
+        $txt_permohonan = 'keberatan penunjukan wajib pajak';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '07') {
+        $txt_permohonan = 'keberatan atas pajak terhutang';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '08') {
+        $txt_permohonan = 'pengurangan atas besarnya pajak terhutang';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '09') {
+        $txt_permohonan = 'restitusi dan kompensasi';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '10') {
+        $txt_permohonan = 'pengurangan denda administrasi';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '11') {
+        $txt_permohonan = 'penentuan kembali tanggal jatuh tempo';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '12') {
+        $txt_permohonan = 'penundaan tanggal jatuh tempo';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '13') {
+        $txt_permohonan = 'pemberian informasi pbb';
+    } elseif ($row['KD_JNS_PELAYANAN'] == '14') {
+        $txt_permohonan = 'pembetulan sk keberatan';
+    }
+    if ($row['STATUS_SELESAI'] == 2) {
+        $status = 'Terproses';
+    } 
+    if ($row['STATUS_SELESAI'] == 0) {
+        $status = 'Tanpa Keterangan';
+    }
+    $data = array(
+        $no++,
+        $row['TGL_TERIMA_DOKUMEN_WP'],
+        $statkol,
+        $row['THN_PELAYANAN'].'.'.$row['BUNDEL_PELAYANAN'].'.'.$row['NO_URUT_PELAYANAN'],
+        $txt_permohonan,
+        $row['KD_PROPINSI_PEMOHON'].'.'.$row['KD_DATI2_PEMOHON'].'.'.$row['KD_KECAMATAN_PEMOHON'].'.'.$row['KD_KELURAHAN_PEMOHON'].'.'.$row['KD_BLOK_PEMOHON'].'-'.$row['NO_URUT_PEMOHON'].'.'.$row['KD_JNS_OP_PEMOHON'],
+        $row['NAMA_PEMOHON'],
+        $row['ALAMAT_PEMOHON'],
+        '<a id="dokumen" class="btn btn-sm btn-primary" data-id="'.$row['THN_PELAYANAN'].'.'.$row['BUNDEL_PELAYANAN'].'.'.$row['NO_URUT_PELAYANAN'].'" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i></a>',
+        '-',
+        $row['TGL_PERKIRAAN_SELESAI'],
+        $status,
+        '-',
+        $row['KETERANGAN_PST'],
+        $row['NIP_PENERIMA']
+    );
+    $output['data'][] = $data;
 } 
 
+echo json_encode($output);
 
 ?>

@@ -6,6 +6,7 @@
     <meta name='viewport' content='width=device-width, minimum-scale=1'>
     <title>Datatables</title>
     <link rel='stylesheet' href='./assets/bootstrap/css/bootstrap.min.css'>
+     <link rel="stylesheet" href="./assets/plugin/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/plugin/data-table/css/jquery.dataTables.min.css">
     <style>
       .container-fluid {
@@ -22,9 +23,11 @@
       @media screen and (max-width: 1550px) {
            table.display > thead > tr > th {
               font-size: 80%; 
+              text-align: center;
            }
            table.display > tbody > tr > td {
               font-size: 64%; 
+              text-align: center;
            }  
       }
     </style>
@@ -70,7 +73,11 @@
   <script src="./assets/plugin/data-table/js/jquery.dataTables.min.js"></script>
   <script>
     $(document).ready(function() {
-        $('.dataTables').dataTable();
+        $('.dataTables').dataTable({
+            "processing": true,
+            "serverside": true,
+            "ajax": "data.php"
+        });
     });
   </script>
  </body>

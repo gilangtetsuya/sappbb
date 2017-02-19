@@ -12,20 +12,22 @@
     /* Array of database columns which should be read and sent back to DataTables. Use a space where
      * you want to insert a non-database field (for example a counter or static image)
      */
-    $aColumns = array( 'thn_pelayanan', 'bundel_pelayanan', 'no_urut_pelayanan', 'kd_propinsi_pemohon', 'kd_dati2_pemohon', 'kd_kecamatan_pemohon', 'kd_kelurahan_pemohon', 'kd_blok_pemohon', 'no_urut_pemohon', 'kd_jns_op_pemohon' );
+    $aColumns = array( 'a.THN_PELAYANAN', 'a.BUNDEL_PELAYANAN', 'a.NO_URUT_PELAYANAN', 'b.NAMA_PEMOHON', 'b.ALAMAT_PEMOHON', 'b.KETERANGAN_PST', 'b.CATATAN_PST', 'b.STATUS_KOLEKTIF', 'b.TGL_TERIMA_DOKUMEN_WP', 'b.TGL_PERKIRAAN_SELESAI', 'b.NIP_PENERIMA', 'a.KD_PROPINSI_PEMOHON', 'a.KD_DATI2_PEMOHON', 'a.KD_KECAMATAN_PEMOHON', 'a.KD_KELURAHAN_PEMOHON', ' a.KD_BLOK_PEMOHON', 'a.NO_URUT_PEMOHON', 'a.KD_JNS_OP_PEMOHON', 'a.KD_JNS_PELAYANAN', 'a.THN_PAJAK_PERMOHONAN', 'a.STATUS_SELESAI', 'a.KD_SEKSI_BERKAS' );
      
     /* Indexed column (used for fast and accurate table cardinality) */
-    $sIndexColumn = "id";
+    $sIndexColumn = "a.THN_PELAYANAN";
      
     /* DB table to use */
-    $sTable = "ajax";
-     
+    $sTables = array( 'pst_detail', 'pst_permohonan' );
+
+    $joinIdentified = "a.THN_PELAYANAN||a.BUNDEL_PELAYANAN||a.NO_URUT_PELAYANAN = b.THN_PELAYANAN||b.BUNDEL_PELAYANAN||b.NO_URUT_PELAYANAN"; 
+
     /* Database connection information */
-    $gaSql['user']     = "";
-    $gaSql['password'] = "";
-    $gaSql['schema']   = "";
-    $gaSql['port']     = "";
-    $gaSql['server']   = "";
+    $gaSql['user']     = "pbb";
+    $gaSql['password'] = "pbb";
+    $gaSql['schema']   = "orcl";
+    $gaSql['port']     = "1521";
+    $gaSql['server']   = "127.0.0.1";
      
     $connection_string = "(DESCRIPTION=(ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)
     (HOST = {$gaSql['server']  })(PORT = {$gaSql['port'] })))(CONNECT_DATA=(SID={$gaSql['schema']})))";
@@ -113,7 +115,7 @@
      * word by word on any field. It's possible to do here, but concerned about efficiency
      * on very large tables.
      */
-    $sWhere = "";
+    $sWhere = "a.KD_JNS_PELAYANAN IN ('01','02','03') AND a.KD_KECAMATAN_PEMOHON IN ('140','100','080','090') AND a.THN_PELAYANAN = '2016'";
     $nWhereGenearalCount = 0;
     if (isset($_GET['sSearch']))
     {
@@ -185,7 +187,7 @@
      * Get data to display
      */
      //Inner sql - not being fetched by itself.
-    $sQueryInner = "SELECT ".implode(', ', $aColumns).", row_number() over (".$sOrder.") rowsNumerator FROM   ".$sTable." ".$sWhere;
+    $sQueryInner = "SELECT ".implode(', ', $aColumns).", row_number() over (".$sOrder.") rowsNumerator FROM  ".$sTables[0]." a JOIN ".$sTables[1]." b ON ".$joinIdentified." ".$sWhere;
     $sQueryFinal = "SELECT ".implode(', ', $aColumns)." FROM (".$sQueryInner.") qry ".$sLimit." ORDER BY rowsNumerator";
      
      
@@ -195,7 +197,7 @@
     $iFilteredTotal = 0;
      
     /* Total data set length */
-    $sQueryTotalCount = "SELECT COUNT(".$sIndexColumn.") as \"totalRowsCount\" FROM  ".$sTable;
+    $sQueryTotalCount = "SELECT COUNT(".$sIndexColumn.") as \"totalRowsCount\" FROM  ".$sTables[0]." a JOIN ".$sTables[1]." b ON ".$joinIdentified." ".$sWhere;
  
     //Create Statments
     $statmntFinal = oci_parse($conn, $sQueryFinal);
