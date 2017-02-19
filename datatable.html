@@ -19,6 +19,14 @@
       .panel > .panel-heading {
          border-radius: 0;  
       }
+      @media screen and (max-width: 1550px) {
+           table.display > thead > tr > th {
+              font-size: 80%; 
+           }
+           table.display > tbody > tr > td {
+              font-size: 64%; 
+           }  
+      }
     </style>
  </head>
 <body>
@@ -31,7 +39,27 @@
          jQuery Datatables  
        </div>
        <div class="panel-body">
-           
+        <table class="display dataTables" cellspacing="0">
+          <thead>
+            <tr>
+                <th>No.</th>
+                <th>Tgl Masuk</th>
+                <th>Jenis Kol.</th>
+                <th>No. Pelayanan</th>
+                <th>Jenis Pelayanan</th>
+                <th>NOP</th>
+                <th>Nama Pemohon</th>
+                <th>Letak OP</th>
+                <th>Lampiran Dokumen</th>
+                <th>NOP Baru</th>
+                <th>Tgl Perkiraan (Selesai)</th>
+                <th>Status</th>
+                <th>Seksi Penerima Berkas</th>
+                <th>Ket.</th>
+                <th>NIP Penerima</th>    
+            </tr>    
+          </thead>   
+        </table>    
        </div>    
       </div>      
      </div>       
@@ -40,5 +68,10 @@
 
   <script src='./assets/js/jquery.min.js'></script>
   <script src="./assets/plugin/data-table/js/jquery.dataTables.min.js"></script>
+  <script>
+    $(document).ready(function() {
+        $('.dataTables').dataTable();
+    });
+  </script>
  </body>
 </html>
