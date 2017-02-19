@@ -66,7 +66,7 @@ foreach ($rows as $row) {
         $row['KD_PROPINSI_PEMOHON'].'.'.$row['KD_DATI2_PEMOHON'].'.'.$row['KD_KECAMATAN_PEMOHON'].'.'.$row['KD_KELURAHAN_PEMOHON'].'.'.$row['KD_BLOK_PEMOHON'].'-'.$row['NO_URUT_PEMOHON'].'.'.$row['KD_JNS_OP_PEMOHON'],
         $row['NAMA_PEMOHON'],
         $row['ALAMAT_PEMOHON'],
-        '<a id="dokumen" class="btn btn-sm btn-primary" data-id="'.$row['THN_PELAYANAN'].'.'.$row['BUNDEL_PELAYANAN'].'.'.$row['NO_URUT_PELAYANAN'].'" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i></a>',
+        '<button type="button" id="dokumen" class="btn btn-sm btn-primary" data-id="'.$row['THN_PELAYANAN'].'.'.$row['BUNDEL_PELAYANAN'].'.'.$row['NO_URUT_PELAYANAN'].'" data-toggle="modal" data-target="#myModal"><i class="fa fa-file-text-o"></i></button>',
         '-',
         $row['TGL_PERKIRAAN_SELESAI'],
         $status,
