@@ -31,6 +31,20 @@ function autotab(original,destination) {
         alert("Masukkan username dan password anda!"); 
         username.focus();
         return false;
+     } else {
+        $.ajax({
+            type: "POST",
+            url: "app/lib-ajax/_cekLogin.php",
+            data: { user: username.val(), pass: password.val() },
+            success: function(data) {
+                if (data == false) {
+                    alert("Maaf, username atau password yang anda masukkan tidak valid!");
+                    return false;
+                } else {
+                    window.document.location = "views/";
+                }
+            }
+        });
      }
    });
    
@@ -94,8 +108,6 @@ function autotab(original,destination) {
               });
   new $.fn.dataTable.FixedHeader( table );
   
-  
-
 }(jQuery);
 // definition datepicker 
 + function ($) {
