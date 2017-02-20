@@ -83,8 +83,8 @@ class Users {
             die("INTERNAL ERRROR CONNECTION!");
         }
     }
-    // insert data log pengguna
-    public function _logPengguna( $id, $log ) {
+    // insert data log users
+    public function _logUsers( $id, $log ) {
         $ip = $_SERVER['REMOTE_ADDR'];
         $browser = $_SERVER['HTTP_USER_AGENT'];
         $time = date('d-m-Y h:i:s');

@@ -14,7 +14,7 @@ class Session {
     }
 
     public function _logoutProtect() {
-        if ($this->_loggedId() === false) {
+        if ($this->_loggedId() === true) {
             header("Location: views/");
             exit();
         } 

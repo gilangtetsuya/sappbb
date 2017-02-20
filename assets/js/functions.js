@@ -21,32 +21,6 @@ function autotab(original,destination) {
 */
 + function ($) {
 'use strict';
-
-   const btnLogin = $('._login');
-   var username = $('._user');
-   var password = $('._pass');
-
-   btnLogin.on('click', function () {
-     if (username.val() == '' || password.val() == '') {
-        alert("Masukkan username dan password anda!"); 
-        username.focus();
-        return false;
-     } else {
-        $.ajax({
-            type: "POST",
-            url: "app/lib-ajax/_cekLogin.php",
-            data: { user: username.val(), pass: password.val() },
-            success: function(data) {
-                if (data == false) {
-                    alert("Maaf, username atau password yang anda masukkan tidak valid!");
-                    return false;
-                } else {
-                    window.document.location = "views/";
-                }
-            }
-        });
-     }
-   });
    
    const btnPelayanan = $('._subPer');
    const statKol = $('._statKol');

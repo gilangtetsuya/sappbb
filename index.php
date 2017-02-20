@@ -1,5 +1,26 @@
 <?php 
 require_once 'app/init.php';
+$Session->_logoutProtect(); 
+
+if (isset($_POST['login'])) {
+    $username = addslashes(strip_tags(trim($_POST['username'])));
+    $password = addslashes(strip_tags(trim($_POST['password'])));
+    $login = $Users->_cekLogin($username, $password);
+    $cekStatus = $Users->_cekStatus($username);
+    if ($cekStatus === true) {
+        echo '<script>alert("Maaf, akun anda telah di nonaktifkan oleh admin!");</script>';
+    } else {
+        if ($login === false) {
+           echo '<script>alert("Maaf, masukkan username atau password yang valid!");</script>';
+        } else {
+           $_SESSION['user_sap'] = $login;
+           $Users->_logUsers($login, "login ke sistem!");
+           echo $login;
+           header('Location: views/');
+        }
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +28,7 @@ require_once 'app/init.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>Login Page</title>
+   <title>SAP | Login</title>
    <link rel="icon" type="iamge/x-icon" href="./assets/img/favicon.ico">
    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
    <link rel="stylesheet" href="./assets/css/style.css"> 
@@ -37,7 +58,7 @@ require_once 'app/init.php';
           <div class="form-group">
            <input type="password" name="password" class="form-control form-line _pass" placeholder="Password">   
           </div>
-          <button type="submit" class="btn btn-teal _login">Log in</button>
+          <button type="submit" name="login" class="btn btn-teal _login">Log in</button>
         </form>  
        </div>   
       </div>
@@ -50,6 +71,20 @@ require_once 'app/init.php';
    </footer>
 
   <script src="./assets/js/jquery.min.js"></script>
-  <script src="./assets/js/functions.js"></script>
+  <script>
+    $(document).ready(function () {
+          const btnLogin = $('._login');
+          var username = $('._user');
+          var password = $('._pass');
+
+          btnLogin.on('click', function () {
+            if (username.val() == '' || password.val() == '') {
+                alert("Masukkan username dan password anda!"); 
+                username.focus();
+                return false;
+            } 
+          });
+    });
+  </script>
  </body>
 </html>
