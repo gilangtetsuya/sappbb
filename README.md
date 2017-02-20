@@ -18,8 +18,8 @@ Sistem Administarsi Pelayanan PBB (SAP PBB) adalah pengembaangan dari aplikasi S
  - Zona 2 (Wilayah 2)
  - Zona 3 (Wilayah 3)
  - Zona 4 (Wilayah 4)
-*Chart Berkas Permohonan Masuk
-*Pencarian Berkas Detail
+- Chart Berkas Permohonan Masuk
+- Pencarian Berkas Detail
  - By No.Pelayanan
  - By Nama Pemohon
  - By NOP

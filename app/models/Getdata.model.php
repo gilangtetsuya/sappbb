@@ -168,12 +168,10 @@ class Getdata {
         return $query->fetch(PDO::FETCH_ASSOC);
     } 
     // Get data berkas masuk by zona
-    public function _dataBerkasMasukByZona($startRow, $rowPerPage, $dat_zona) {
-        $zona = join($dat_zona, ',');
-        $query = $this->db->prepare("SELECT * FROM (SELECT a.*, rownum rnum FROM (SELECT a.thn_pelayanan, a.bundel_pelayanan, a.no_urut_pelayanan, b.nama_pemohon, b.alamat_pemohon, b.keterangan_pst, b.catatan_pst, b.status_kolektif, b.tgl_terima_dokumen_wp, b.tgl_perkiraan_selesai, b.nip_penerima, a.kd_propinsi_pemohon, a.kd_dati2_pemohon, a.kd_kecamatan_pemohon, a.kd_kelurahan_pemohon, a.kd_blok_pemohon, a.no_urut_pemohon, a.kd_jns_op_pemohon, a.kd_jns_pelayanan, a.thn_pajak_permohonan, a.status_selesai, a.kd_seksi_berkas FROM pst_detail a JOIN pst_permohonan b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.kd_jns_pelayanan IN ('01','02','03') AND a.kd_kecamatan_pemohon IN ($zona) ORDER BY a.thn_pelayanan ASC) a WHERE rownum <= :endrow) WHERE rnum >= :startrow");
-        $query->bindParam(':startrow', $startRow);
-        $endRow = $startRow + $rowPerPage - 1;
-        $query->bindParam(':endrow', $endRow);
+    public function _dataBerkasMasukByZona( $datZona, $thnBerkas ) {
+        $zona = join($datZona, ',');
+        $query = $this->db->prepare("SELECT a.thn_pelayanan, a.bundel_pelayanan, a.no_urut_pelayanan, b.nama_pemohon, b.alamat_pemohon, b.keterangan_pst, b.catatan_pst, b.status_kolektif, b.tgl_terima_dokumen_wp, b.tgl_perkiraan_selesai, b.nip_penerima, a.kd_propinsi_pemohon, a.kd_dati2_pemohon, a.kd_kecamatan_pemohon, a.kd_kelurahan_pemohon, a.kd_blok_pemohon, a.no_urut_pemohon, a.kd_jns_op_pemohon, a.kd_jns_pelayanan, a.thn_pajak_permohonan, a.status_selesai, a.kd_seksi_berkas FROM pst_detail a JOIN pst_permohonan b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.kd_jns_pelayanan IN ('01','02','03') AND a.kd_kecamatan_pemohon IN ($zona) AND a.thn_pelayanan = :thn ORDER BY a.thn_pelayanan ASC");
+        $query->bindParam(':thn', $thnBerkas);
         // execute query
         try {
            $query->execute();

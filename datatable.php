@@ -3,7 +3,7 @@
  <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge, Chrome=1'>
-    <meta name='viewport' content='width=device-width, minimum-scale=1'>
+    <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1'>
     <title>Datatables</title>
     <link rel='stylesheet' href='./assets/bootstrap/css/bootstrap.min.css'>
     <link rel="stylesheet" href="./assets/plugin/font-awesome/css/font-awesome.min.css">
@@ -29,7 +29,7 @@
       table.table > tfoot > tr > th {
          border-top: 3px solid #ddd;
       }
-      .modal-content {
+      .modal-content { 
          border-radius: 0;
       }
       @media screen and (max-width: 1550px) {
@@ -49,12 +49,13 @@
   
    <div class="container-fluid">
     <div class="row">
-     <div class="col-md-12">
+     <div class="col-sm-12">
       <div class="panel panel-primary">
        <div class="panel-heading">
          jQuery Datatables  
        </div>
        <div class="panel-body">
+        <input type="hidden" class="thnBerkas" value="<?= $_GET['tahun'] ?>">
         <table class="table table-striped table-hover table-bordered nowrap dataTables_1" cellspacing="0" width="100%">
           <thead>
             <tr>
@@ -126,12 +127,12 @@
   <script src="./assets/plugin/responsive-datatable/responsive.bootstrap.min.js"></script>
   <script>
     $(document).ready(function() {
-
+        var thn = $('.thnBerkas').val();
         var table =  $('.dataTables_1').DataTable({
                         responsive: true,
                         "processing": true,
                         "serverside": true,
-                        "ajax": "data.php"
+                        "ajax": "data.php?zona=2&tahun=" + thn
                       });
         new $.fn.dataTable.FixedHeader( table );             
         
