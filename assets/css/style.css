@@ -28,6 +28,7 @@ body {
 }
 .panel {
     border-radius: 0;
+    border: none;
     box-shadow: 0 2px 3px rgba(0,0,0,0.3);
 }
 .panel > .panel-heading {
@@ -388,35 +389,25 @@ label {
     border-color: #FFC107;
 }
 /* custom dataTable */
-.table {
-    margin-top: 10px;  
-}
-.table-striped thead tr {
-    border-top: 1px solid #ccc;          
-}
-.table-striped tbody tr:last-child {
-    border-bottom: 1px solid #ccc;        
-}
 table.table > thead > tr > th {
-    font-size: 76%;
     text-transform: uppercase;
-    text-align: center;
 }
 table.table > tbody > tr > td {
-    font-size: 68%;
     text-transform: uppercase;
-    text-align: center;
 }
 .pagination {
   margin: 0;    
 }
+div.dataTables_wrapper div.dataTables_filter {
+  float: right;
+}
 @media screen and (max-width: 1760px) {
     table.display > thead > tr > th {
-        font-size: 80%;
+        font-size: 90%;
         text-align: center;
     }
     table.display > tbody > tr > td {
-        font-size: 70%;
+        font-size: 80%;
         font-weight: 400;
         text-align: center;
         padding: 3px;
@@ -432,12 +423,6 @@ table.table > tbody > tr > td {
         font-weight: 400;
         text-align: right;
     }
-    table.table > thead > tr > th {
-        font-size: 68%;
-    }
-    table.table > tbody > tr > td {
-        font-size: 68%;
-    }
 }
 @media screen and (max-width: 1400px) {
     .inner > span {
@@ -450,14 +435,6 @@ table.table > tbody > tr > td {
         font-size: 160%;    
         font-weight: 400;
         text-align: right;
-    }
-    table.table > thead > tr > th {
-        font-size: 60%;
-    }
-    table.table > tbody > tr > td {
-        padding: 3px;
-        font-size: 62%;
-        text-align: center;
     }
 }
 /* media query for mobile display */
@@ -548,8 +525,5 @@ table.table > tbody > tr > td {
     }
     .login-footer {
         text-align: center;
-    }
-    table.display {
-        overflow-y: hidden;
     }
 }

@@ -89,9 +89,12 @@ function autotab(original,destination) {
 // datatable definition
 + function ($) {
 
-  $('#table-1').dataTable({
-     "bProcessing": true
-  });
+  var table = $('#table-1').DataTable({
+                 responsive: true
+              });
+  new $.fn.dataTable.FixedHeader( table );
+  
+  
 
 }(jQuery);
 // definition datepicker 

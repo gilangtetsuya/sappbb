@@ -199,7 +199,7 @@ get_sidenav();
           Berkas yang mendekati waktu perkiraan selesai Zona 1
          </div>
          <div class="panel-body">
-          <table id="table-1" class="display" cellspacing="0">
+          <table id="table-1" class="table table-striped table-hover table-bordered nowrap" cellspacing="0" width="100%">
            <thead>
              <tr>
                <th>No.Surat</th>

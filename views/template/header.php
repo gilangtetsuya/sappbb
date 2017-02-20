@@ -8,7 +8,9 @@
    <link rel="icon" type="iamge/x-icon" href="../assets/img/favicon.ico">
    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
    <link rel="stylesheet" href="../assets/plugin/font-awesome/css/font-awesome.min.css">
-   <link rel="stylesheet" type="text/css" href="../assets/plugin/data-table/css/jquery.dataTables.min.css">
+   <link rel="stylesheet" href="../assets/plugin/data-table/css/dataTables.bootstrap.min.css">
+   <link rel="stylesheet" href="../assets/plugin/responsive-datatable/fixedHeader.bootstrap.min.css">
+   <link rel="stylesheet" href="../assets/plugin/responsive-datatable/responsive.bootstrap.min.css"> 
    <link rel="stylesheet" href="../assets/plugin/datepicker/css/datepicker.min.css">
    <link rel="stylesheet" href="../assets/css/style.css"> 
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
