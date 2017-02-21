@@ -95,15 +95,25 @@ function autotab(original,destination) {
   "use strict";
   
   var tableEl = $('table');
+  var zona = $('.zona').val();
+  var tahun = $('.tahun').val();
 
-  if (tableEl.hasClass('table')) {
-       var table_1 = $('#table-1').DataTable({
+  if (tableEl.hasClass('table_1')) {
+       var table1 = $('.table_1').DataTable({
                  responsive: true,
                  "bRetrieve": true
-              });
+       });
        new $.fn.dataTable.FixedHeader( table1 );
-       
-       
+  }
+
+  if (tableEl.hasClass('dataTables_1')) {
+       var dataTables = $('.dataTables_1').DataTable({
+             responsive: true,
+             "processing": true,
+             "serverside": true,
+             "ajax": `../app/lib-ajax/_getDataBerkas.php?zona=${zona}&tahun=${tahun}`
+       });
+       new $.fn.dataTable.FixedHeader( dataTables );
   }
   
 }(jQuery);

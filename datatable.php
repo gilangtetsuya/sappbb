@@ -132,7 +132,7 @@
                         responsive: true,
                         "processing": true,
                         "serverside": true,
-                        "ajax": "data.php?zona=2&tahun=" + thn
+                        "ajax": `data.php?zona=2&tahun=${thn}`
                       });
         new $.fn.dataTable.FixedHeader( table );             
         

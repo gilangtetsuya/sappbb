@@ -35,42 +35,42 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
       <li>
         <a href="javascript:void(0)" id="menu-toggle">Zona 1</a>
         <ul class="sidenav-sub-menu-tree">
-          <li><a href="javascript:void(0)">2013</a></li>
-          <li><a href="javascript:void(0)">2014</a></li>
-          <li><a href="javascript:void(0)">2015</a></li>
-          <li><a href="javascript:void(0)">2016</a></li> 
-          <li><a href="javascript:void(0)">2017</a></li>
+          <li><a href="data-berkas-permohonan.php?z=1&t=2013">2013</a></li>
+          <li><a href="data-berkas-permohonan.php?z=1&t=2014">2014</a></li>
+          <li><a href="data-berkas-permohonan.php?z=1&t=2015">2015</a></li>
+          <li><a href="data-berkas-permohonan.php?z=1&t=2016">2016</a></li> 
+          <li><a href="data-berkas-permohonan.php?z=1&t=2017">2017</a></li>
         </ul>  
       </li> 
       <li>
         <a href="javascript:void(0)" id="menu-toggle">Zona 2</a>
         <ul class="sidenav-sub-menu-tree">
-          <li><a href="javascript:void(0)">2013</a></li>
-          <li><a href="javascript:void(0)">2014</a></li>
-          <li><a href="javascript:void(0)">2015</a></li>
-          <li><a href="javascript:void(0)">2016</a></li> 
-          <li><a href="javascript:void(0)">2017</a></li>
+          <li><a href="data-berkas-permohonan.php?z=2&t=2013">2013</a></li>
+          <li><a href="data-berkas-permohonan.php?z=2&t=2014">2014</a></li>
+          <li><a href="data-berkas-permohonan.php?z=2&t=2015">2015</a></li>
+          <li><a href="data-berkas-permohonan.php?z=2&t=2016">2016</a></li> 
+          <li><a href="data-berkas-permohonan.php?z=2&t=2017">2017</a></li>
         </ul>  
       </li>
       <li>
         <a href="javascript:void(0)" id="menu-toggle">Zona 3</a>
         <ul class="sidenav-sub-menu-tree">
-          <li><a href="javascript:void(0)">2013</a></li>
-          <li><a href="javascript:void(0)">2014</a></li>
-          <li><a href="javascript:void(0)">2015</a></li>
-          <li><a href="javascript:void(0)">2016</a></li> 
-          <li><a href="javascript:void(0)">2017</a></li>
+          <li><a href="data-berkas-permohonan.php?z=3&t=2013">2013</a></li>
+          <li><a href="data-berkas-permohonan.php?z=3&t=2014">2014</a></li>
+          <li><a href="data-berkas-permohonan.php?z=3&t=2015">2015</a></li>
+          <li><a href="data-berkas-permohonan.php?z=3&t=2016">2016</a></li> 
+          <li><a href="data-berkas-permohonan.php?z=3&t=2017">2017</a></li>
         </ul> 
       </li>
       <li>
         <a href="javascript:void(0)" id="menu-toggle">Zona 4</a>
-         <ul class="sidenav-sub-menu-tree">
-          <li><a href="javascript:void(0)">2013</a></li>
-          <li><a href="javascript:void(0)">2014</a></li>
-          <li><a href="javascript:void(0)">2015</a></li>
-          <li><a href="javascript:void(0)">2016</a></li> 
-          <li><a href="javascript:void(0)">2017</a></li>
-        </ul>
+        <ul class="sidenav-sub-menu-tree">
+          <li><a href="data-berkas-permohonan.php?z=4&t=2013">2013</a></li>
+          <li><a href="data-berkas-permohonan.php?z=4&t=2014">2014</a></li>
+          <li><a href="data-berkas-permohonan.php?z=4&t=2015">2015</a></li>
+          <li><a href="data-berkas-permohonan.php?z=4&t=2016">2016</a></li> 
+          <li><a href="data-berkas-permohonan.php?z=4&t=2017">2017</a></li>
+        </ul> 
       </li>
      </ul>
     </li>
