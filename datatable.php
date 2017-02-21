@@ -56,7 +56,7 @@
        </div>
        <div class="panel-body">
         <input type="hidden" class="thnBerkas" value="<?= $_GET['tahun'] ?>">
-        <table class="table table-striped table-hover table-bordered nowrap dataTables_1" cellspacing="0" width="100%">
+        <table class="table table-condensed table-striped table-hover table-bordered nowrap dataTables_1" cellspacing="0" width="100%">
           <thead>
             <tr>
                 <th>No.</th>

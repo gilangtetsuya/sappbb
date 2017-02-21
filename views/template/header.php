@@ -1,7 +1,17 @@
+<?php 
+require '../app/database/db_oci.php';
+require_once '../app/models/Session.model.php';
+require_once '../app/models/Users.model.php';
+$session = new Session;
+$users = new Users($link);
+$session->_loginProtect();
+$row = $users->_getDataUsersById($_SESSION['user_sap']);
+?>
 <!DOCTYPE html>
 <html lang="en">
  <head>
    <meta charset="UTF-8">
+   <meta name="author" content="Gilang Anugrah">
    <meta http-equiv="X-UA-Compatible" content="IE=edge, Chrome=1">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>SAP | <?php echo $data['title']; ?></title>
@@ -34,11 +44,11 @@
           <ul class="nav navbar-nav navbar-right">
            <li class="dropdown">
             <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" role="button" aria-haspopup="true" aria-expanded="false">
-             Admin <span class="caret"></span>
+             <?php echo ucfirst($row['USERNAME']); ?> <span class="caret"></span>
             </a>
              <ul class="dropdown-menu">
               <li><a href="javascript:void(0)"><i class="fa fa-user"></i> Profile</a></li>
-              <li><a href="javascript:void(0)"><i class="fa fa-sign-out"></i> Log out</a></li> 
+              <li><a href="logout.php"><i class="fa fa-sign-out"></i> Log out</a></li> 
              </ul>
            </li> 
           </ul> 

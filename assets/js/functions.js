@@ -44,10 +44,7 @@ function autotab(original,destination) {
 + function ($) {
 'use strict';
 
-  var btnToggle    = [
-      '#menu-toggle-1',
-      '#menu-toggle-2'
-  ]
+  var btnToggle    = document.querySelectorAll('#menu-toggle'); 
   var toggleMobile = '.toggle-visible';
   var sidenav      = $('.sidenav');  
   var sidenavEl    = $('.sidenav__container');
@@ -55,9 +52,28 @@ function autotab(original,destination) {
   const sidenavElCon = document.querySelector('.sidenav__container');
   const detabinator  = new Detabinator(sidenavElCon);
   detabinator.inert = true;
+  
+  var height = document.querySelector('body').scrollHeight;
 
-  $(btnToggle.join(",")).on('click', function () {
-      $(this).next().slideToggle(300);
+  $('.sidenav').css('height', height);
+
+  $('body').resize(function () {
+       $('.sidenav').css('height', height); 
+  });
+
+  $(window).scroll(function() {
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+            var h = document.querySelector('body').scrollHeight;
+            $('.sidenav').css('height', h);
+      }    
+  });
+  
+  $('.sidenav > .navbar-brand').removeAttr('tabindex');
+
+  $.each(btnToggle, function(e, btn) {
+       $(btn).on('click', function() {
+           $(this).next().slideToggle(300);  
+       });  
   });
 
   $(document).on('click', toggleMobile,function () {
@@ -76,11 +92,19 @@ function autotab(original,destination) {
 }(jQuery);  
 // datatable definition
 + function ($) {
+  "use strict";
+  
+  var tableEl = $('table');
 
-  var table = $('#table-1').DataTable({
-                 responsive: true
+  if (tableEl.hasClass('table')) {
+       var table_1 = $('#table-1').DataTable({
+                 responsive: true,
+                 "bRetrieve": true
               });
-  new $.fn.dataTable.FixedHeader( table );
+       new $.fn.dataTable.FixedHeader( table1 );
+       
+       
+  }
   
 }(jQuery);
 // definition datepicker 

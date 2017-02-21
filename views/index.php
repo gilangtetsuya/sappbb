@@ -260,7 +260,7 @@ get_sidenav();
                     if ($row['STATUS_SELESAI'] == 0) {
                         $status = 'Tanpa Keterangan';
                     }
-                     echo '<tr>
+                     echo '<tr> 
                             <td>'.$row['NO_SRT_PERMOHONAN'].'</td>
                             <td>'.$row['TGL_TERIMA_DOKUMEN_WP'].'</td>
                             <td>'.$statkol.'</td>
