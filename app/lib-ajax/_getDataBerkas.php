@@ -99,7 +99,7 @@ foreach ($rows as $row) {
         $dataSeksi['NM_SEKSI'],
         $row['KETERANGAN_PST'],
         $row['NIP_PENERIMA'],
-        '<a href="#" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>',
+        '<a href="edit-data-berkas.php?thn='.$row['THN_PELAYANAN'].'&bundel='.$row['BUNDEL_PELAYANAN'].'&urut='.$row['NO_URUT_PELAYANAN'].'" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>',
         '<button type="button" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>'
     );
     $output['data'][] = $data;

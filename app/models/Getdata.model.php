@@ -219,7 +219,7 @@ class Getdata {
         return $query->fetch(PDO::FETCH_ASSOC);
     }
     // Get data berkas like nama pemohon
-    public function _getDataBerkasByNama($nama_pemohon) {
+    public function _getDataBerkasLikeNama($nama_pemohon) {
         $query = $this->db->prepare("SELECT * FROM pst_permohonan a JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.nama_pemohon LIKE '%$nama_pemohon%'");
         try {
            $query->execute();
@@ -229,7 +229,7 @@ class Getdata {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     // Get data berkas like nomor peleyanan
-    public function _getDataBerkasByNoPelayanan($thn, $bundel, $urut) {
+    public function _getDataBerkasLikeNoPelayanan($thn, $bundel, $urut) {
         $query = $this->db->prepare("SELECT * FROM pst_permohonan a JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.thn_pelayanan LIKE '$thn%' AND a.bundel_pelayanan LIKE '$bundel%' AND a.no_urut_pelayanan LIKE '$urut%'");
         try {
            $query->execute();
@@ -239,7 +239,7 @@ class Getdata {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     // Get data berksa like NOP
-    public function _getDataBerkasByNop($nop) {
+    public function _getDataBerkasLikeNop($nop) {
         $query = $this->db->prepare("SELECT * FROM pst_permohonan a JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE b.kd_propinsi_pemohon||b.kd_dati2_pemohon||b.kd_kecamatan_pemohon||b.kd_kelurahan_pemohon||b.kd_blok_pemohon||b.no_urut_pemohon||b.kd_jns_op_pemohon LIKE '%$nop%'");
         try {
            $query->execute();
@@ -249,7 +249,7 @@ class Getdata {
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
     // Get data berkas like tanggal masuk berkas
-    public function _getDataBerkasByTglMasuk($tgl1, $tgl2) {
+    public function _getDataBerkasLikeTglMasuk($tgl1, $tgl2) {
         $query = $this->db->prepare("SELECT * FROM pst_permohonan a JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.tgl_terima_dokumen_wp >= to_date(:tgl_1, 'DD-MM-YYYY') AND a.tgl_terima_dokumen_wp <= to_date(:tgl_2, 'DD-MM-YYYY')");
         $query->bindParam(':tgl_1', $tgl1);
         $query->bindParam(':tgl_2', $tgl2);
@@ -300,5 +300,15 @@ class Getdata {
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
+    public function _getDataBerkasByNoPelayanan ($noPelayanan) {
+        $query = $this->db->prepare("SELECT a.thn_pelayanan, a.bundel_pelayanan, a.no_urut_pelayanan, b.nama_pemohon, b.alamat_pemohon, b.keterangan_pst, b.catatan_pst, b.status_kolektif, b.tgl_terima_dokumen_wp, b.tgl_perkiraan_selesai, b.nip_penerima, a.kd_propinsi_pemohon, a.kd_dati2_pemohon, a.kd_kecamatan_pemohon, a.kd_kelurahan_pemohon, a.kd_blok_pemohon, a.no_urut_pemohon, a.kd_jns_op_pemohon, a.kd_jns_pelayanan, a.thn_pajak_permohonan, a.status_selesai, a.kd_seksi_berkas FROM pst_detail a JOIN pst_permohonan b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.kd_jns_pelayanan IN ('01','02','03') AND a.thn_pelayanan||'.'||a.bundel_pelayanan||'.'||a.no_urut_pelayanan = :nopelayanan");
+        $query->bindParam(':nopelayanan', $noPelayanan);
+        // execute query
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
 }
-?>

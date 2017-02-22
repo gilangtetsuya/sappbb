@@ -67,7 +67,7 @@ function autotab(original,destination) {
             $('.sidenav').css('height', h);
       }    
   });
-  
+
   $('.sidenav > .navbar-brand').removeAttr('tabindex');
 
   $.each(btnToggle, function(e, btn) {
@@ -114,14 +114,32 @@ function autotab(original,destination) {
         });  
   });
 
-  if (tableEl.hasClass('table_1')) {
+  if (tableEl.hasClass('tableHome')) {
        var table1 = $('.table_1').DataTable({
                  responsive: true,
                  "processing": true,
                  "serverside": true,
                  "ajax": "../app/lib-ajax/_getDataBerkasByTglSelesai.php?zona=1"
        });
-       new $.fn.dataTable.FixedHeader( table1 );
+       var table2 = $('.table_2').DataTable({
+                 responsive: true,
+                 "processing": true,
+                 "serverside": true,
+                 "ajax": "../app/lib-ajax/_getDataBerkasByTglSelesai.php?zona=2"
+       });
+       var table3 = $('.table_3').DataTable({
+                 responsive: true,
+                 "processing": true,
+                 "serverside": true,
+                 "ajax": "../app/lib-ajax/_getDataBerkasByTglSelesai.php?zona=3"
+       });
+       var table4 = $('.table_4').DataTable({
+                 responsive: true,
+                 "processing": true,
+                 "serverside": true,
+                 "ajax": "../app/lib-ajax/_getDataBerkasByTglSelesai.php?zona=4"
+       });
+       new $.fn.dataTable.FixedHeader( table1, table2, table3, table4 );
   }
 
   if (tableEl.hasClass('dataTables_1')) {

@@ -88,6 +88,7 @@ $zona = [
      'des' => count($Getdata->_getDataBerkasByBulan($datZona['4'], '01/12/'.date('Y'), '31/12/'.date('Y'), date('Y')))
     ]
 ]; 
+$dataUsers = $Users->_getDataUsersById($_SESSION['user_sap']); 
 get_header($data);
 get_sidenav();
 ?>
@@ -191,6 +192,7 @@ get_sidenav();
        </div> 
       </div> 
      </div>
+     <?php if ($dataUsers['U_LEVEL'] == 0 || $dataUsers['U_LEVEL'] == 1): ?>
       <div class="row">
        <div class="col-md-12">
         <div class="panel panel-warning">
@@ -198,7 +200,7 @@ get_sidenav();
           Berkas yang mendekati waktu perkiraan selesai Zona 1
          </div>
          <div class="panel-body">
-          <table class="table table-striped table-hover table-bordered nowrap table_1" cellspacing="0" width="100%">
+          <table class="table table-striped table-hover table-bordered nowrap table_1 tableHome" cellspacing="0" width="100%">
            <thead>
              <tr>
                <th>No.Surat</th>
@@ -236,6 +238,154 @@ get_sidenav();
         </div> 
        </div> 
       </div>
+       <?php 
+         endif; 
+         if ($dataUsers['U_LEVEL'] == 0 || $dataUsers['U_LEVEL'] == 2):
+       ?>
+       <div class="row">
+       <div class="col-md-12">
+        <div class="panel panel-primary">
+         <div class="panel-heading">
+          Berkas yang mendekati waktu perkiraan selesai Zona 2
+         </div>
+         <div class="panel-body">
+          <table class="table table-striped table-hover table-bordered nowrap table_2 tableHome" cellspacing="0" width="100%">
+           <thead>
+             <tr>
+               <th>No.Surat</th>
+               <th>Tgl Masuk</th>
+               <th>Jenis Kol.</th>
+               <th>No. Pelayanan</th>
+               <th>Jenis Pelayanan</th>
+               <th>NOP</th>
+               <th>Nama Pemohon</th>
+               <th>Letak OP</th>
+               <th>Tgl Perkiraan Selesai</th>
+               <th>Status</th>
+               <th>Ket.</th>
+               <th>NIP Penerima</th>
+             </tr>
+           </thead> 
+           <tfoot>
+             <tr>
+               <th>No.Surat</th>
+               <th>Tgl Masuk</th>
+               <th>Jenis Kol.</th>
+               <th>No. Pelayanan</th>
+               <th>Jenis Pelayanan</th>
+               <th>NOP</th>
+               <th>Nama Pemohon</th>
+               <th>Letak OP</th>
+               <th>Tgl Perkiraan Selesai</th>
+               <th>Status</th>
+               <th>Ket.</th>
+               <th>NIP Penerima</th>
+             </tr>  
+           </tfoot>        
+          </table> 
+         </div> 
+        </div> 
+       </div> 
+      </div>
+      <?php 
+         endif; 
+         if ($dataUsers['U_LEVEL'] == 0 || $dataUsers['U_LEVEL'] == 3):
+      ?>
+      <div class="row">
+       <div class="col-md-12">
+        <div class="panel panel-default">
+         <div class="panel-heading">
+          Berkas yang mendekati waktu perkiraan selesai Zona 3
+         </div>
+         <div class="panel-body">
+          <table class="table table-striped table-hover table-bordered nowrap table_3 tableHome" cellspacing="0" width="100%">
+           <thead>
+             <tr>
+               <th>No.Surat</th>
+               <th>Tgl Masuk</th>
+               <th>Jenis Kol.</th>
+               <th>No. Pelayanan</th>
+               <th>Jenis Pelayanan</th>
+               <th>NOP</th>
+               <th>Nama Pemohon</th>
+               <th>Letak OP</th>
+               <th>Tgl Perkiraan Selesai</th>
+               <th>Status</th>
+               <th>Ket.</th>
+               <th>NIP Penerima</th>
+             </tr>
+           </thead> 
+           <tfoot>
+             <tr>
+               <th>No.Surat</th>
+               <th>Tgl Masuk</th>
+               <th>Jenis Kol.</th>
+               <th>No. Pelayanan</th>
+               <th>Jenis Pelayanan</th>
+               <th>NOP</th>
+               <th>Nama Pemohon</th>
+               <th>Letak OP</th>
+               <th>Tgl Perkiraan Selesai</th>
+               <th>Status</th>
+               <th>Ket.</th>
+               <th>NIP Penerima</th>
+             </tr>  
+           </tfoot>        
+          </table> 
+         </div> 
+        </div> 
+       </div> 
+      </div>
+       <?php 
+         endif; 
+         if ($dataUsers['U_LEVEL'] == 0 || $dataUsers['U_LEVEL'] == 4):
+       ?>
+      <div class="row">
+       <div class="col-md-12">
+        <div class="panel panel-success">
+         <div class="panel-heading">
+          Berkas yang mendekati waktu perkiraan selesai Zona 4
+         </div>
+         <div class="panel-body">
+          <table class="table table-striped table-hover table-bordered nowrap table_4 tableHome" cellspacing="0" width="100%">
+           <thead>
+             <tr>
+               <th>No.Surat</th>
+               <th>Tgl Masuk</th>
+               <th>Jenis Kol.</th>
+               <th>No. Pelayanan</th>
+               <th>Jenis Pelayanan</th>
+               <th>NOP</th>
+               <th>Nama Pemohon</th>
+               <th>Letak OP</th>
+               <th>Tgl Perkiraan Selesai</th>
+               <th>Status</th>
+               <th>Ket.</th>
+               <th>NIP Penerima</th>
+             </tr>
+           </thead> 
+           <tfoot>
+             <tr>
+               <th>No.Surat</th>
+               <th>Tgl Masuk</th>
+               <th>Jenis Kol.</th>
+               <th>No. Pelayanan</th>
+               <th>Jenis Pelayanan</th>
+               <th>NOP</th>
+               <th>Nama Pemohon</th>
+               <th>Letak OP</th>
+               <th>Tgl Perkiraan Selesai</th>
+               <th>Status</th>
+               <th>Ket.</th>
+               <th>NIP Penerima</th>
+             </tr>  
+           </tfoot>        
+          </table> 
+         </div> 
+        </div> 
+       </div> 
+      </div>
+     <?php endif; ?> 
     </section> <!-- main content -->
 
  <script src="../assets/plugin/highchart/highcharts.js"></script>
