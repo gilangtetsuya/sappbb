@@ -97,11 +97,29 @@ function autotab(original,destination) {
   var tableEl = $('table');
   var zona = $('.zona').val();
   var tahun = $('.tahun').val();
+  
+  // get data lampiran dokumen
+  $(document).on('click', '#dokumen', function () {
+        var noPelayanan = $(this).attr('data-id');
+        $.ajax({
+           type: "GET",
+           url: "../app/lib-ajax/_getDataLampiran.php",
+           data: { no_pelayanan: noPelayanan },
+           dataType: "JSON",
+           success: function (res) {
+              $.each(res, function (e, data) {
+                  $('.js-lampiran').append('<li>' + data + '</li>');  
+              });              
+           } 
+        });  
+  });
 
   if (tableEl.hasClass('table_1')) {
        var table1 = $('.table_1').DataTable({
                  responsive: true,
-                 "bRetrieve": true
+                 "processing": true,
+                 "serverside": true,
+                 "ajax": "../app/lib-ajax/_getDataBerkasByTglSelesai.php?zona=1"
        });
        new $.fn.dataTable.FixedHeader( table1 );
   }

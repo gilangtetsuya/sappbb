@@ -30,7 +30,6 @@ $datZona = [
 $totalBerkas = number_format(count($Getdata->_getAllDataBerkasMasuk()), 0, "", ".");
 $totalBerkasProses = number_format(count($Getdata->_getDataBerkasByStatus("1")), 0, "", ".");
 $totalBerkasTanpaKet = number_format(count($Getdata->_getDataBerkasByStatus("0")), 0, "", ".");
-$zona4 = $Getdata->_dataBerkasMasukByTglSelesai($datZona['4'], date('Y'));
 $zona = [
     '1' => [
      'jan' => count($Getdata->_getDataBerkasByBulan($datZona['1'], '01/01/'.date('Y'), '31/01/'.date('Y'), date('Y'))),
@@ -216,67 +215,22 @@ get_sidenav();
                <th>NIP Penerima</th>
              </tr>
            </thead> 
-           <tbody>
-            <?php 
-                foreach($zona4 as $row) {
-                   if ($row['STATUS_KOLEKTIF'] == 0) {
-                     $statkol = "INDIVIDU";
-                   } 
-                   if ($row['STATUS_KOLEKTIF'] == 1) {
-                     $statkol = "MASSAL/KOLEKTIF";
-                   }
-                   if ($row['KD_JNS_PELAYANAN'] == '01') {
-                       $txt_permohonan = 'pendaftaran data baru';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '02') {
-                       $txt_permohonan = 'mutasi objek/subjek';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '03') {
-                       $txt_permohonan = 'pembetulan sppt/skp/stp';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '04') {
-                       $txt_permohonan = 'pembatalan sppt/skp';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '05') {
-                       $txt_permohonan = 'salinan sppt/skp';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '06') {
-                       $txt_permohonan = 'keberatan penunjukan wajib pajak';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '07') {
-                       $txt_permohonan = 'keberatan atas pajak terhutang';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '08') {
-                       $txt_permohonan = 'pengurangan atas besarnya pajak terhutang';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '09') {
-                       $txt_permohonan = 'restitusi dan kompensasi';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '10') {
-                       $txt_permohonan = 'pengurangan denda administrasi';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '11') {
-                       $txt_permohonan = 'penentuan kembali tanggal jatuh tempo';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '12') {
-                       $txt_permohonan = 'penundaan tanggal jatuh tempo';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '13') {
-                       $txt_permohonan = 'pemberian informasi pbb';
-                    } elseif ($row['KD_JNS_PELAYANAN'] == '14') {
-                       $txt_permohonan = 'pembetulan sk keberatan';
-                    }
-                    if ($row['STATUS_SELESAI'] == 1) {
-                        $status = 'Terproses';
-                    } 
-                    if ($row['STATUS_SELESAI'] == 0) {
-                        $status = 'Tanpa Keterangan';
-                    }
-                     echo '<tr> 
-                            <td>'.$row['NO_SRT_PERMOHONAN'].'</td>
-                            <td>'.$row['TGL_TERIMA_DOKUMEN_WP'].'</td>
-                            <td>'.$statkol.'</td>
-                            <td>'.$row['THN_PELAYANAN'].'.'.$row['BUNDEL_PELAYANAN'].'.'.$row['NO_URUT_PELAYANAN'].'</td>
-                            <td>'.$txt_permohonan.'</td>
-                            <td>'.$row['KD_PROPINSI_PEMOHON'].'.'.$row['KD_DATI2_PEMOHON'].'.'.$row['KD_KECAMATAN_PEMOHON'].'.'.$row['KD_KELURAHAN_PEMOHON'].'.'.$row['KD_BLOK_PEMOHON'].'-'.$row['NO_URUT_PEMOHON'].'.'.$row['KD_JNS_OP_PEMOHON'].'</td>
-                            <td>'.$row['NAMA_PEMOHON'].'</td>
-                            <td>'.$row['ALAMAT_PEMOHON'].'</td>
-                            <td>'.$row['TGL_PERKIRAAN_SELESAI'].'</td>
-                            <td>'.$status.'</td>
-                            <td>'.$row['KETERANGAN_PST'].'</td>
-                            <td>'.$row['NIP_PENERIMA'].'</td>
-                         </tr>'; 
-                }
-            ?>   
-           </tbody>
+           <tfoot>
+             <tr>
+               <th>No.Surat</th>
+               <th>Tgl Masuk</th>
+               <th>Jenis Kol.</th>
+               <th>No. Pelayanan</th>
+               <th>Jenis Pelayanan</th>
+               <th>NOP</th>
+               <th>Nama Pemohon</th>
+               <th>Letak OP</th>
+               <th>Tgl Perkiraan Selesai</th>
+               <th>Status</th>
+               <th>Ket.</th>
+               <th>NIP Penerima</th>
+             </tr>  
+           </tfoot>        
           </table> 
          </div> 
         </div> 

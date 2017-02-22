@@ -436,6 +436,9 @@ table.table > tfoot > tr > th {
 div.dataTables_wrapper div.dataTables_filter {
   float: right;
 }
+.modal-content {
+  border-radius: 0;  
+}
 @media screen and (max-width: 1760px) {
     table.display > thead > tr > th {
         font-size: 90%;
