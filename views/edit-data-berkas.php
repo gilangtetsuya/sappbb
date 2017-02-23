@@ -6,6 +6,8 @@ $data = array(
 $tahun = $_GET['thn'];
 $bundel = $_GET['bundel'];
 $urut = $_GET['urut'];
+$noPelayanan = $tahun.'.'.$bundel.'.'.$urut;
+$dataB = $Getdata->_getDataBerkasByNoPelayanan( $noPelayanan );
 get_header($data);
 get_sidenav();
 ?>
@@ -20,7 +22,7 @@ get_sidenav();
       <div class="panel panel-success">
        <div class="panel-heading">
          Edit detail data berkas permohonan
-       </div>    
+       </div>     
        <div class="panel-body">
         <form name="f3" method="post">
          <div class="form-group">
@@ -36,7 +38,7 @@ get_sidenav();
             </div>  
             <div class="col-sm-3 pull-right">
              <div class="input-group">
-               <input type="text" name="tgl_masuk" id="date-1" class="form-control input-sm" data-language='en' data-position='right top' placeholder="Tgl Masuk" aria-describedby="addon-1" readonly>
+               <input type="text" name="tgl_masuk" id="date-1" class="form-control input-sm" data-language='en' data-position='right top' placeholder="Tgl Masuk" aria-describedby="addon-1" value="<?= $dataB['TGL_TERIMA_DOKUMEN_WP'] ?>" readonly>
                <span class="input-group-addon" id="addon-1"><i class="fa fa-calendar"></i></span>   
              </div>    
             </div>
@@ -47,13 +49,13 @@ get_sidenav();
            <div class="col-xs-5">
             <select name="status_kol" class="form-control input-sm _statKol">
              <option value="">- STATUS KOLEKTIF -</option>   
-             <option value="0">INDIVIDU</option>
-             <option value="1">KOLEKTIF</option>
+             <option value="0" <?php if ($dataB['STATUS_KOLEKTIF'] == 0) { echo "selected"; } ?>>INDIVIDU</option>
+             <option value="1" <?php if ($dataB['STATUS_KOLEKTIF'] == 1) { echo "selected"; } ?>>KOLEKTIF</option>
             </select>   
            </div>
            <div class="col-xs-3 pull-right">
             <div class="input-group">
-             <input type="text" name="tgl_selesai" id="date-2" class="form-control input-sm" data-language='en' data-position='right top' placeholder="Tgl Perkiraan Selesai" aria-describedby="addon-2" readonly>   
+             <input type="text" name="tgl_selesai" id="date-2" class="form-control input-sm" data-language='en' data-position='right top' placeholder="Tgl Perkiraan Selesai" aria-describedby="addon-2" value="<?php echo $dataB['TGL_PERKIRAAN_SELESAI']; ?>" readonly>   
              <span class="input-group-addon" id="addon-2"><i class="fa fa-calendar"></i></span>   
             </div>
            </div>   
