@@ -15,7 +15,8 @@ get_sidenav();
     <div class="btn-group pull-right" role="group" aria-label="table-action">
      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Pilihan <span class="caret"></span></button>
      <ul class="dropdown-menu">
-      <li><a href="javascript:void(0)"><i class="fa fa-print fa-fw"></i> Print</a></li>   
+      <li><a href="javascript:void(0)"><i class="fa fa-print fa-fw"></i> Print</a></li>
+      <li><a href="javascript:void(0)"><i class="fa fa-file-excel-o fa-fw"></i> Export ke Excel</a></li>   
      </ul>   
     </div>
     <input type="hidden" class="zona" value="<?php echo $_GET['z']; ?>">

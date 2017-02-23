@@ -123,7 +123,7 @@ class Users {
         } catch ( PDOException $e ) {
             die("INTERNAL ERRROR CONNECTION!");
         }
-        return $query->fetchAll(PDO::FETCH_ASSOC);
+        return $query->fetchAll(PDO::FETCH_BOTH);
     } 
     // get all data log users
     public function _getAllDataLogUsers() {

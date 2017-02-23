@@ -2,6 +2,8 @@
 ob_start();
 session_start();
 require 'database/db_oci.php';
+// load dynamic libraries
+require_once 'lib/PHPExcel/ExcelGenerator.php';
 // set autolad class model
 function _getModel($modelName) {
     $file = "models/".$modelName.".model.php";
@@ -14,7 +16,6 @@ try {
     $Getdata = new Getdata($link);
     $Insert  = new Insert($link);
     $Update  = new Update($link);
-    $Paginate = new Paginate($link); 
 } catch (Exception $e) {
     die("Error message: " . $e->getMessage() . "\n");
 }
