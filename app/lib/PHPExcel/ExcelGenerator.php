@@ -88,10 +88,10 @@ class ExcelGenerator extends PHPExcel {
              $index = 1;
              foreach ($this->column as $row) {
                 if (count($this->width) > 0) {
-                    $this->getActiveSheet()->getColumnDimension($this->columnName($index))->setWidth($this->width[$index - 1]);
+                    $this->getActiveSheet()->getColumnDimension($this->columnName($index))->setAutoSize(true);
                 }
-
-                $this->getActiveSheet()->setCellValue($this->columnName($index) . $start, $result_db[$row]);
+                
+                $this->getActiveSheet()->setCellValue($this->columnName($index) . $start, $result_db[$row],  PHPExcel_Cell_DataType::TYPE_STRING);
                 $index++;
              }
              $start++;
