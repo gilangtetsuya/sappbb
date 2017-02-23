@@ -16,7 +16,7 @@ get_sidenav();
      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Pilihan <span class="caret"></span></button>
      <ul class="dropdown-menu">
       <li><a href="javascript:void(0)"><i class="fa fa-print fa-fw"></i> Print</a></li>
-      <li><a href="javascript:void(0)"><i class="fa fa-file-excel-o fa-fw"></i> Export ke Excel</a></li>   
+      <li><a href="excel_data_berkas.php?zona=<?php echo $_GET['z']; ?>&tahun=<?php echo $_GET['t']; ?>"><i class="fa fa-file-excel-o fa-fw"></i> Export ke Excel</a></li>   
      </ul>   
     </div>
     <input type="hidden" class="zona" value="<?php echo $_GET['z']; ?>">
