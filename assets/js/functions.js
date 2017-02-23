@@ -114,6 +114,14 @@ function autotab(original,destination) {
         });  
   });
 
+  $('.modal-header .close').on('click', function() {
+       $('.js-lampiran').empty(); 
+  });
+
+   $('.modal').on('click', function() {
+       $('.js-lampiran').empty(); 
+  });
+
   if (tableEl.hasClass('tableHome')) {
        var table1 = $('.table_1').DataTable({
                  responsive: true,
