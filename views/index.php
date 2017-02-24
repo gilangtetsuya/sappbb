@@ -393,7 +393,7 @@ get_sidenav();
  <script>
   var chart = new Highcharts.Chart({
         chart: {
-            type: 'line',
+            type: 'column',
             renderTo: 'container'
         },
         title: {

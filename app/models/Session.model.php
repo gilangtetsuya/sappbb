@@ -1,4 +1,5 @@
 <?php 
+error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 // Create session users
 class Session {
     // instance session 
@@ -8,7 +9,7 @@ class Session {
     
     public function _loginProtect() {
         if ($this->_loggedId() === false) {
-            echo '<script>alert("Maaf, silahkan login untuk masuk ke menu utama!");document.location="../"</script>';
+            echo '<script>alert("Maaf, silahkan login untuk masuk ke menu utama!");document.location="../";</script>';
             exit();
         }
     }

@@ -39,7 +39,7 @@ if (isset($_POST['login'])) {
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
    <![endif]--> 
  </head>
-<body>
+<body class="login-body">
    
    <div class="container">
     <div class="row">
@@ -58,7 +58,7 @@ if (isset($_POST['login'])) {
           <div class="form-group">
            <input type="password" name="password" class="form-control form-line _pass" placeholder="Password">   
           </div>
-          <button type="submit" name="login" class="btn btn-teal _login">Log in</button>
+          <button type="submit" name="login" class="btn btn-teal btn-block _login">Log in</button>
         </form>  
        </div>   
       </div>
