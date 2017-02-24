@@ -39,6 +39,49 @@ function autotab(original,destination) {
        } 
    });
 
+   $('._regis').on('click', function() {
+        $('.msg-tmp').empty();
+        if ($('.user').val() == "") {
+            $('.msg-tmp').append('<div class="alert alert-warning">' + "Username harus di isi!" + "</div>");
+            $('.user').focus();
+            return false;
+        }
+        if ($('.nip').val() == "") {
+            $('.msg-tmp').append('<div class="alert alert-warning">' + "NIP harus di isi!" + "</div>");
+            $('.nip').focus();
+            return false;
+        }
+        if ($('.pass').val() != $('.pconf').val()) {
+            $('.msg-tmp').append('<div class="alert alert-warning">' + "Masukkan password yang benar!" + "</div>");
+            $('.pass').focus();
+            return false;
+        }
+        if ($('.level').val() == "") {
+            $('.msg-tmp').append('<div class="alert alert-warning">' + "User level harus di isi!" + "</div>");
+            $('.level').focus();
+            return false;
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "../app/lib-ajax/_addDataUsers.php",
+                data: { user: $('.user').val(), pass: $('.pass').val(), nip: $('.nip').val(), level: $('.level').val(), status: $('.status').val() },
+                success: function(data) {
+                    $('.msg-tmp').append( data );
+                    $('.user').val("");
+                    $('.pass').val("");
+                    $('.pconf').val("");
+                    $('.nip').val("");
+                    $('.level').val("");
+                }
+            });
+            return false;
+        }
+   });
+
+   $('._res').on('click', function() {
+        $('.msg-tmp').empty(); 
+   });
+
 }(jQuery);
 // sidemenu toggle 
 + function ($) {

@@ -7,7 +7,7 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
 <div class="js-sidenav sidenav__container">
  <aside class="sidenav">
  <a href="javascript:void(0)" class="navbar-brand">
-  <img src="../assets/img/favicon.ico" alt="brand">
+  <img src="../assets/img/logo.png" alt="brand">
   <span>SAP PBB</span>
  </a>
  <nav>
@@ -82,7 +82,7 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
     <li>
      <a href="javascript:void(0)" id="menu-toggle"><span class="fa fa-users fa-fw"></span> Admin Menu <span class="caret"></span></a>
      <ul class="sidenav-sub-menu">
-       <li><a href="javascript:void(0)">Tambah Pengguna</a></li>
+       <li><a href="tambah-pengguna.php">Tambah Pengguna</a></li>
        <li><a href="javascript:void(0)">Data Pengguna</a></li>
        <li><a href="javascript:void(0)">Data Log Pengguna</a></li> 
      </ul>

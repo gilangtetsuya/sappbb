@@ -33,7 +33,7 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
 <body>
 
     <header class="mobile-header">
-      <nav class="navbar navbar-default navbar-fixed-top bg-blue">
+      <nav class="navbar navbar-default navbar-fixed-top bg-red">
        <div class="container-fluid">
         <a href="javascript:void(0)" class="navbar-brand">
           <img src="../assets/img/favicon.ico" alt="brand">

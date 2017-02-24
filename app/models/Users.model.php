@@ -7,24 +7,19 @@ class Users {
     }
     // insert data pengguna
     public function _insertDataUsers( $username, $password, $nip, $level, $status ) {
-        $options = [
-            "cost" => 12,    
-        ];
-        $password = password_hash($password, PASSWORD_BCRYPT, $options);
-        $time = date('d-m-Y');
+        $password = password_hash($password, PASSWORD_DEFAULT);
         // instace query
-        $query = $this->db->prepare("INSERT INTO pst_pengguna (id, username, password, nip, u_level, status, created) VALUES(user_id.nextval, :user, :pass, :nip, :level, :stat, :create)");
-        $query->bindParam(':user', $username);
+        $query = $this->db->prepare("INSERT INTO pst_pengguna VALUES(user_id.nextval, :name, :pass, :u_nip, :u_level, :stat, current_date)");
+        $query->bindParam(':name', $username);
         $query->bindParam(':pass', $password);
-        $query->bindParam(':nip', $nip);
-        $query->bindParam(':level', $level);
+        $query->bindParam(':u_nip', $nip);
+        $query->bindParam(':u_level', $level);
         $query->bindParam(':stat', $status);
-        $query->bindParam(':create', $time);
         // execute query
         try {
             $query->execute();
         } catch ( PDOException $e ) {
-            die("INTERNAL ERRROR CONNECTION!");
+            die($e->getMessage());
         }
     }
     // cek users exists 

@@ -45,7 +45,7 @@ if (isset($_POST['login'])) {
     <div class="row">
      <div class="col-sm-4 col-sm-offset-4">
       <div class="panel login-panel">
-         <img src="./assets/img/favicon.ico" class="img-responsive center-block" width="70" height="70" alt="Login image">   
+         <img src="./assets/img/logo.png" class="img-responsive center-block" alt="Login image">   
        <h2 class="login-title text-center">SAP PBB</h2>
        <p class="text-center">Sistem Administrasi Pelayanan PBB</p>
        <p class="text-center">Badan Pendapatan Daerah Kota Makassar</p>

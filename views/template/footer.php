@@ -1,6 +1,6 @@
 
     <footer class="main-footer">
-     <span>Sistem Administrasi Pelayanan PBB &copy; <?php echo date('Y') ?> All rights reserved</span> 
+     <span>Sistem Administrasi Pelayanan PBB v.1.0 &copy; <?php echo date('Y') ?> All rights reserved</span> 
     </footer> <!-- main footer -->
 
   <script src="../assets/js/jquery.min.js"></script>
