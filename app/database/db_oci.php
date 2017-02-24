@@ -2,8 +2,8 @@
 // set options connection to database
 $config = [
     'username' => 'pbb',
-    'password' => 'pbb',
-    'tnsname'  => '127.0.0.1:1521/orcl'
+    'password' => 'Makassar_2014',
+    'tnsname'  => '192.168.10.212:1521/orcl'
 ];
 // instance connection
 $link = new PDO("oci:dbname=" . $config['tnsname'], $config['username'], $config['password']);

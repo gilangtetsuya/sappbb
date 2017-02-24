@@ -8,10 +8,10 @@ if (isset($_POST['login'])) {
     $login = $Users->_cekLogin($username, $password);
     $cekStatus = $Users->_cekStatus($username);
     if ($cekStatus === true) {
-        echo '<script>alert("Maaf, akun anda telah di nonaktifkan oleh admin!");</script>';
+        echo '<script>alert("Akun anda telah di nonaktifkan oleh admin!");</script>';
     } else {
         if ($login === false) {
-           echo '<script>alert("Maaf, masukkan username atau password yang valid!");</script>';
+           echo '<script>alert("Masukkan username atau password yang valid!");</script>';
         } else {
            $_SESSION['user_sap'] = $login;
            $Users->_logUsers($login, "login ke sistem!");
