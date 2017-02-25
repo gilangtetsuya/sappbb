@@ -103,7 +103,7 @@ function autotab(original,destination) {
   $('body').resize(function () {
        $('.sidenav').animate({
            height: height
-       }, 50);
+       }, 10);
   });
 
   $(window).scroll(function() {
