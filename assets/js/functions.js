@@ -96,7 +96,7 @@ function autotab(original,destination) {
   const detabinator  = new Detabinator(sidenavElCon);
   detabinator.inert = true;
   
-  var height = document.querySelector('body').scrollHeight;
+  var height = $(window).height();
 
   $('.sidenav').css('height', height);
 
