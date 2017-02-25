@@ -42,22 +42,22 @@ function autotab(original,destination) {
    $('._regis').on('click', function() {
         $('.msg-tmp').empty();
         if ($('.user').val() == "") {
-            $('.msg-tmp').append('<div class="alert alert-warning">' + "Username harus di isi!" + "</div>");
+            $('.msg-tmp').append('<div class="alert alert-info">' + "Username harus di isi!" + "</div>");
             $('.user').focus();
             return false;
         }
         if ($('.nip').val() == "") {
-            $('.msg-tmp').append('<div class="alert alert-warning">' + "NIP harus di isi!" + "</div>");
+            $('.msg-tmp').append('<div class="alert alert-info">' + "NIP harus di isi!" + "</div>");
             $('.nip').focus();
             return false;
         }
         if ($('.pass').val() != $('.pconf').val()) {
-            $('.msg-tmp').append('<div class="alert alert-warning">' + "Masukkan password yang benar!" + "</div>");
+            $('.msg-tmp').append('<div class="alert alert-info">' + "Masukkan password yang benar!" + "</div>");
             $('.pass').focus();
             return false;
         }
         if ($('.level').val() == "") {
-            $('.msg-tmp').append('<div class="alert alert-warning">' + "User level harus di isi!" + "</div>");
+            $('.msg-tmp').append('<div class="alert alert-info">' + "User level harus di isi!" + "</div>");
             $('.level').focus();
             return false;
         } else {
@@ -101,13 +101,18 @@ function autotab(original,destination) {
   $('.sidenav').css('height', height);
 
   $('body').resize(function () {
-       $('.sidenav').css('height', height); 
+       $('.sidenav').animate({
+           height: height
+       }, 50);
   });
 
   $(window).scroll(function() {
       if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
             var h = document.querySelector('body').scrollHeight;
-            $('.sidenav').css('height', h);
+            $('.sidenav').animate({
+                height: h
+            }, 10);
+            return false;
       }    
   });
 

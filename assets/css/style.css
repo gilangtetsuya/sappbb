@@ -402,8 +402,8 @@ label {
 .title-content {
     padding: 6px;
     padding-left: 15px;
-    border-bottom: 1px solid #E0E0E0;
     font-weight: 400;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.3);
 }
 .title-content span {
     font-size: 110%;
@@ -554,9 +554,11 @@ div.dataTables_wrapper div.dataTables_filter {
         will-change: transform;
         transform: translateX(-102%);
         z-index: 1050;
+        padding-top: 0;
     }
     .sidenav > .navbar-brand {
         display: none;
+        overflow: hidden;
     }
     .sidenav-menu > li > a {
         font-size: 80%;
