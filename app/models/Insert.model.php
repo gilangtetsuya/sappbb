@@ -72,7 +72,7 @@ class Insert {
         try {
             $query->execute();
         } catch (PDOExcpetion $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
     }
     // insert to table pst_lampiran
@@ -179,7 +179,7 @@ class Insert {
         try {
             $query->execute();
         } catch (PDOExcpetion $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
     }
     // insert to table pst_detail
@@ -254,7 +254,7 @@ class Insert {
         try {
             $query->execute();
         } catch (PDOExcpetion $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
     }
     // insert to table pst_data_op_baru
@@ -323,7 +323,7 @@ class Insert {
         try {
             $query->execute();
         } catch (PDOExcpetion $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
     }
     // insert to table pst_permohonan_pengurangan
@@ -392,7 +392,7 @@ class Insert {
         try {
             $query->execute();
         } catch (PDOExcpetion $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
     }
     // select data objek pajak for insert to table temp_data_op
@@ -422,7 +422,7 @@ class Insert {
         try {
             $query->execute();
         } catch (PDOExcpetion $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -475,7 +475,7 @@ class Insert {
         try {
             $query->execute();
         } catch (PDOExcpetion $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetch(PDO::FETCH_ASSOC); 
     }
@@ -603,7 +603,7 @@ class Insert {
         try {
             $query->execute(); 
         } catch(PDOExcpetion $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
     }
 }

@@ -19,7 +19,7 @@ class Users {
         try {
             $query->execute();
         } catch ( PDOException $e ) {
-            die($e->getMessage());
+            die("INTERNAL ERROR CONNECTION");
         }
     }
     // cek users exists 
@@ -111,7 +111,7 @@ class Users {
     }
     // get all data users 
     public function _getAllDataUsers() {
-        $query = $this->db->prepare("SELECT * FROM pst_pengguna ORDER BY id ASC");
+        $query = $this->db->prepare("SELECT * FROM pst_pengguna WHERE username NOT IN ('admin') ORDER BY id ASC");
         // execute query
         try {
             $query->execute();
@@ -130,5 +130,46 @@ class Users {
             die("INTERNAL ERROR CONNECTION!");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function _upStatUsers($status, $id) {
+        $query = $this->db->prepare("UPDATE pst_pengguna SET status = :stat WHERE id = :u_id");
+        $query->bindParam(':stat', $status);
+        $query->bindParam(':u_id', $id);
+        // execute query
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    } 
+    public function _delDataUsers($id) {
+        $query = $this->db->prepare("DELETE FROM pst_pengguna WHERE id = :u_id");
+        $query->bindParam(':u_id', $id);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    }
+    public function _upDatUsers($username, $nip, $level, $id) {
+        $query = $this->db->prepare("UPDATE pst_pengguna SET username = :name, nip = :u_nip, u_level = :lvl WHERE id = :u_id");
+        $query->bindParam(':name', $username);
+        $query->bindParam(':u_nip', $nip);
+        $query->bindParam(':lvl', $level);
+        $query->bindParam(':u_id', $id);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    }
+    public function _getDataUserLikeNip($nip) {
+        $query = $this->db->prepare("SELECT username FROM pst_pengguna WHERE nip LIKE '%$nip%'");
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+        return $query->fetch(PDO::FETCH_ASSOC);
     }
 }

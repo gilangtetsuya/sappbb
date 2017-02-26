@@ -82,6 +82,108 @@ function autotab(original,destination) {
         $('.msg-tmp').empty(); 
    });
 
+   $(document).on('click', '._stat', function() {
+       var id = $(this).attr('data-id');
+       var stat;
+       if ($(this).attr('data-status') == "e") {
+           stat = "d";
+           $(this).html("Nonaktif"); 
+           $(this).attr('data-status', 'd');
+           $(this).removeClass('btn-success');
+           $(this).addClass('btn-danger');
+       } else {
+           stat = "e";
+           $(this).html("Aktif");
+           $(this).attr('data-status', 'e');
+           $(this).removeClass('btn-danger');
+           $(this).addClass('btn-success');
+       }
+       $.ajax({
+           type: "GET",
+           url: "../app/lib-ajax/_upStatUsers.php",
+           data: { id: id, status: stat },
+           success: function(e) {
+                console.log(e);
+           }  
+       });
+   });
+
+   $(document).on('click', '.delUsers', function() {
+        var par = $(this).closest('tr');
+        var id = $(this).attr('data-id');
+        var x = confirm("Anda yakin menghapus data pengguna ini?");
+        if (x === false) {
+            return false;
+        } else {
+            $.ajax({
+                type: "GET",
+                url: "../app/lib-ajax/_delDataUsers.php",
+                data: { id: id },
+                success: function() {
+                    par.fadeOut(300);
+                }
+            });
+        }
+   });
+
+   $(document).on('click', '.delete', function() {
+        var par = $(this).closest('tr').prev();
+        var child = $(this).closest('tr');
+        
+   });
+
+   $(document).on('click', '.getdatusers', function() {
+        var uid = $(this).attr('data-id');
+        $.ajax({
+            type: "GET",
+            url: "../app/lib-ajax/_getDatUsers.php",
+            dataType: "JSON",
+            data: { id: uid },
+            success: function(e) {
+                $('.uid').val(uid);
+                $('.user').val(e['username']);
+                $('.nip').val(e['nip']);
+                $('.level').val(e['level']);
+            }
+        });
+   });
+
+   $('.upUsers').on('click', function() {
+        var id = $('.uid').val();
+        var username = $('.user').val();
+        var nip = $('.nip').val();
+        var level = $('.level').val();
+        if (username == "" || nip == "" || level == "") {
+            alert("Semua field harus di isi!");
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "../app/lib-ajax/_upDatUsers.php",
+                data: { user: username, nip: nip, level: level, id: id },
+                success: function(e) {
+                    alert(e);
+                    $('.uid').val("");
+                    $('.user').val("");
+                    $('.nip').val("");
+                    $('.level').val("");
+                    window.document.location = "data-pengguna.php";
+                }
+            });
+            return false;
+        }
+
+   });
+
+   $('.fterima').on('click', function() {
+        var tahun = $('.thn').val();
+        var bundel = $('.bundel').val();
+        var urut = $('.urut').val();
+        if (tahun == "" || bundel == "" || urut == "") {
+            alert("Masukkan no pelayanan yang lengkap!");
+            return false;
+        } 
+   });
+
 }(jQuery);
 // sidemenu toggle 
 + function ($) {
@@ -92,29 +194,28 @@ function autotab(original,destination) {
   var sidenav      = $('.sidenav');  
   var sidenavEl    = $('.sidenav__container');
 
-  const sidenavElCon = document.querySelector('.sidenav__container');
-  const detabinator  = new Detabinator(sidenavElCon);
-  detabinator.inert = true;
-  
-  var height = $(window).height();
+     const sidenavElCon = document.querySelector('.sidenav__container');
+     const detabinator  = new Detabinator(sidenavElCon);
+     detabinator.inert = true;   
 
-  $('.sidenav').css('height', height);
+  var height = $(window).height();   
 
-  $('body').resize(function () {
-       $('.sidenav').animate({
-           height: height
-       }, 10);
-  });
+  $('.sidenav').animate({ height: height }, 0);
 
   $(window).scroll(function() {
-      if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-            var h = document.querySelector('body').scrollHeight;
-            $('.sidenav').animate({
-                height: h
-            }, 10);
-            return false;
+      if ($(window).scrollTop() + $(window).height() < $(document).height() - 100) {
+          $('.sidenav').animate({ height: $(window).scrollTop() + $(window).height() }, 0);
       }    
+      if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+            $('.sidenav').animate({
+                height: $(window).scrollTop() + $(window).height()
+            }, 0, function() {
+                console.log("Scroll");
+            });
+      } 
   });
+  
+  $('html, body').animate({scrollTop: '0px'}, 300);
 
   $('.sidenav > .navbar-brand').removeAttr('tabindex');
 
@@ -206,6 +307,26 @@ function autotab(original,destination) {
              "ajax": `../app/lib-ajax/_getDataBerkas.php?zona=${zona}&tahun=${tahun}`
        });
        new $.fn.dataTable.FixedHeader( dataTables );
+  }
+
+  if (tableEl.hasClass('t_users')) {
+      var dataUsers = $('.t_users').DataTable({
+          responsive: true,
+          "processing": true,
+          "serverside": true,
+          "ajax": "../app/lib-ajax/_getDataUsers.php"
+      });
+      new $.fn.dataTable.FixedHeader( dataUsers );
+  }
+
+  if (tableEl.hasClass('t_log')) {
+      var dataLog = $('.t_log').DataTable({
+          responsive: true,
+          "processing": true,
+          "serverside": true,
+          "ajax": "../app/lib-ajax/_getLogUsers.php"
+      });
+      new $.fn.dataTable.FixedHeader( dataLog );
   }
   
 }(jQuery);

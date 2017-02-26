@@ -8,6 +8,10 @@ body {
     font-weight: 300;
     background: #FFF8DC;
 }
+a:visited,
+a:link {
+    border: none;
+}   
 .login-body {
     background: #bdc3c7;
 }
@@ -228,7 +232,7 @@ label {
     color: #fff;
 }
 .navbar-fixed-top {
-    z-index: 1050; 
+    z-index: 5; 
 }
 .container-fluid > .navbar-brand {
     display: none;
@@ -256,7 +260,7 @@ label {
 .sidenav {
     position: absolute;
     width: 230px;
-    height: auto;
+    /*height: 100vh;*/
     left: 0;
     top: 0;
     padding-top: 49px;
@@ -276,7 +280,7 @@ label {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    z-index: 1050;
+    z-index: 100;
     transition: all 0.3s ease-in-out;
 }
 .sidenav > .navbar-brand:focus,
@@ -413,6 +417,7 @@ label {
     height: auto;
     margin: 0;
     margin-top: 10px;
+    z-index: -105;
 }
 .container > .btn-group {
     margin-bottom: 10px;

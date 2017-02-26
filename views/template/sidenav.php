@@ -84,7 +84,7 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
      <ul class="sidenav-sub-menu">
        <li><a href="tambah-pengguna.php">Tambah Pengguna</a></li>
        <li><a href="data-pengguna.php">Data Pengguna</a></li>
-       <li><a href="javascript:void(0)">Data Log Pengguna</a></li> 
+       <li><a href="data-log-pengguna.php">Data Log Pengguna</a></li> 
      </ul>
     </li>
     <?php endif; ?>

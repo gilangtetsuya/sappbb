@@ -1,16 +1,13 @@
 # sappbb							
 							===============================================
-						    ---- SISTEM ADMINSTRASI PELAYANAN PBB v.0.1 ---
+						    ---- SISTEM ADMINSTRASI PELAYANAN PBB v.1.0 ---
 							===============================================
 Sistem Administarsi Pelayanan PBB (SAP PBB) adalah pengembaangan dari aplikasi SISMIOP yang saat ini di gunakan di lingkup Administrasi PBB yang kemudian di kembangkan dalam bentuk WEB APP dan mengimplementasikan beberapa menu untuk adaministrasi pelayanan PBB.
 
 #Features :
 
 *Login System
-*Admin Menu 
- - Tambah pengguna
- - Data pengguna
- - Data log pengguna    
+*Monitoring Berkas Permohonan PBB
 *Input Data Permohonan 
 *Cetak Tanda Terima Permohonan
 *Data Berkas Permohonan
@@ -23,7 +20,7 @@ Sistem Administarsi Pelayanan PBB (SAP PBB) adalah pengembaangan dari aplikasi S
  - By No.Pelayanan
  - By Nama Pemohon
  - By NOP
-*Import Data berkas permohonan dengan format .xls dan .pdf
+*Import Data berkas permohonan ke file Excel
 *Tampilan Yang Responsive
 
 #License 

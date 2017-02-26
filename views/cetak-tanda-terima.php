@@ -19,22 +19,22 @@ get_sidenav();
         Masukkan Nomor Pelayanan   
        </div>
        <div class="panel-body">
-        <form action="" method="post">
+        <form action="tanda-terima.php" method="get">
          <div class="form-group">
           <div class="row">
            <div class="col-xs-4">
-            <input type="text" class="form-control input-sm" placeholder="Tahun">   
+            <input type="text" name="thn_p" class="form-control input-sm thn" placeholder="Tahun">   
            </div>   
             <div class="col-xs-4">
-            <input type="text" class="form-control input-sm" placeholder="Bundel">   
+            <input type="text" name="bundel_p" class="form-control input-sm bundel" placeholder="Bundel">   
            </div>   
             <div class="col-xs-4">
-            <input type="text" class="form-control input-sm" placeholder="Urut">   
+            <input type="text" name="no_urut_p" class="form-control input-sm urut" placeholder="Urut">   
            </div>   
           </div>   
          </div>
          <legend style="margin-bottom: 10px;"></legend>
-         <button type="submit" class="btn btn-primary">Cetak</button>    
+         <button type="submit" class="btn btn-primary fterima">Cetak</button>    
         </form>   
        </div>   
       </div>        

@@ -14,7 +14,7 @@ class Update {
         try {
            $query->execute(); 
         } catch (PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n"); 
+           die("INTERNAL ERROR CONNECTION"); 
         }
     }
     // update bundel pst
@@ -26,7 +26,7 @@ class Update {
         try {
            $query->execute(); 
         } catch (PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n"); 
+           die("INTERNAL ERROR CONNECTION"); 
         }
     }
     // update tahun pst
@@ -38,7 +38,7 @@ class Update {
         try {
            $query->execute(); 
         } catch (PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n"); 
+           die("INTERNAL ERROR CONNECTION"); 
         }
     }
 }

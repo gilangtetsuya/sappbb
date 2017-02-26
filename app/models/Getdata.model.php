@@ -16,7 +16,7 @@ class Getdata {
        try {
           $query->execute();
        } catch (PDOException $e) {
-          die("Error message: " . $e->getMessage() . "\n");       
+          die("INTERNAL ERROR CONNECTION");       
        }
        return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -44,7 +44,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -72,7 +72,7 @@ class Getdata {
         try {
           $query->execute();
         } catch(PDOException $e) {
-          die("Error message: " . $e->getMessage() . "\n");
+          die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -100,7 +100,7 @@ class Getdata {
         try {
           $query->execute();
         } catch(PDOException $e) {
-          die("Error message: " . $e->getMessage() . "\n");
+          die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -112,7 +112,7 @@ class Getdata {
         try {
            $query->execute(); 
         } catch (PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n"); 
+           die("INTERNAL ERROR CONNECTION"); 
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -124,7 +124,7 @@ class Getdata {
         try {
            $query->execute(); 
         } catch (PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n"); 
+           die("INTERNAL ERROR CONNECTION"); 
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -137,7 +137,7 @@ class Getdata {
         try {
            $query->execute(); 
         } catch (PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n"); 
+           die("INTERNAL ERROR CONNECTION!"); 
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -151,7 +151,7 @@ class Getdata {
         try {
            $query->execute(); 
         } catch (PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n"); 
+           die("INTERNAL ERROR CONNECTION!"); 
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -163,7 +163,7 @@ class Getdata {
         try {
            $query->execute(); 
         } catch (PDOException $e) {
-           die("Error message: " . $e->getMessage() . "\n"); 
+           die("INTERNAL ERROR CONNECTION"); 
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     } 
@@ -176,7 +176,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -189,7 +189,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -202,7 +202,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -214,7 +214,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION!");
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -224,7 +224,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -234,7 +234,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -244,7 +244,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -256,7 +256,7 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -267,7 +267,7 @@ class Getdata {
         try {
            $query->execute(); 
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -279,7 +279,7 @@ class Getdata {
         try {
            $query->execute(); 
         } catch(PDOException $e) {
-           die("Error connection: " . $e->getMessage() . "\n");
+           die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -296,7 +296,7 @@ class Getdata {
         try {
             $query->execute();
         } catch(PDOException $e) {
-            die("Error connection: " . $e->getMessage() . "\n");
+            die("INTERNAL ERROR CONNECTION");
         }
         return $query->fetchAll(PDO::FETCH_ASSOC);
     }

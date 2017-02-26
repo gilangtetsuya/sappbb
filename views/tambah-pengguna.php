@@ -29,19 +29,19 @@ get_sidenav();
       <div class="panel-body">
        <form method="post">
         <div class="form-group">
-         <input type="text" name="username" class="form-control input-sm user" placeholder="Username">
+         <input type="text" name="username" class="form-control user" placeholder="Username">
         </div>
         <div class="form-group">
-         <input type="text" name="nip" class="form-control input-sm nip" placeholder="NIP">
+         <input type="text" name="nip" class="form-control nip" placeholder="NIP">
         </div>
         <div class="form-group">
-         <input type="password" name="password" class="form-control input-sm pass" placeholder="Password">
+         <input type="password" name="password" class="form-control pass" placeholder="Password">
         </div>
         <div class="form-group">
-         <input type="password" name="passconf" class="form-control input-sm pconf" placeholder="Password Confirmation">
+         <input type="password" name="passconf" class="form-control pconf" placeholder="Password Confirmation">
         </div>
         <div class="form-group">
-         <select name="level" class="form-control input-sm level">
+         <select name="level" class="form-control level">
           <option value="">- Level -</option>
           <option value="0">Administrator</option>
           <option value="1">Zona 1</option>

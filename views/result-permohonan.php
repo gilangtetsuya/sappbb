@@ -1,6 +1,7 @@
 <?php 
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 require_once '../app/init.php';
+$user = $Users->_getDataUsersById($_SESSION['user_sap']);
 $data = array(
      'thn_pelayanan' => $_POST['thn_pelayanan'],
      'bundel_pelayanan' => $_POST['bundel_pelayanan'],
@@ -45,7 +46,7 @@ $data = array(
      'l_cagar' => $_POST['l_cagar'],
      'l_lain_lain' => $_POST['l_lain_lain'],
      'catatan' => $_POST['catatan_pst'],
-     'nip_penerima' => '00000021000909010'
+     'nip_penerima' => $user['NIP']
 );
 
 if ($data['kd_jns_pelayanan'] == '01') {
