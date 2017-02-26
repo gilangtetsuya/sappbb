@@ -1,39 +1,30 @@
 <?php 
-
 require_once '../init.php';
 
-$user = $Users->_getDataUsersById($_SESSION['user_sap']);
-$numZona = intval($_GET['zona']);
-$tahun = $_GET['tahun'];
+$type = $_GET['type'];
 
-$datZona = [
-   '1' => [
-      'kd_1' => '140',
-      'kd_2' => '100',
-      'kd_3' => '080',
-      'kd_4' => '090'
-   ],
-   '2' => [
-      'kd_1' => '030',
-      'kd_2' => '020',
-      'kd_3' => '010',
-      'kd_4' => '050'
-   ],
-   '3' => [
-      'kd_1' => '110',
-      'kd_2' => '060'
-   ],
-   '4' => [
-      'kd_1' => '040',
-      'kd_2' => '130',
-      'kd_3' => '150',
-      'kd_4' => '070'
-   ]
-];
+if ($type == 1) {
+    $tahun = $_GET['tahun'];
+    $bundel = $_GET['bundel'];
+    $urut = $_GET['urut'];
+    $rows = $Getdata->_getDataBerkasLikeNoPelayanan($tahun, $bundel, $urut);
+}
 
-$zona = $datZona[$numZona];
+if ($type == 2) {
+    $nop = $_GET['prov'] . $_GET['dati2'] . $_GET['kec'] . $_GET['kel'] . $_GET['blok'] . $_GET['nourut'] . $_GET['jnsop'];
+    $rows = $Getdata->_getDataBerkasLikeNop($nop);        
+}
 
-$rows = $Getdata->_dataBerkasMasukByZona( $zona, $tahun );
+if ($type == 3) {
+    $pemohon = strtoupper($_GET['pemohon']);
+    $rows = $Getdata->_getDataBerkasLikeNama($pemohon);
+}
+
+if ($type == 4) {
+    $tgl1 = $_GET['tgl_1'];
+    $tgl2 = $_GET['tgl_2'];
+    $rows = $Getdata->_getDataBerkasLikeTglMasuk($tgl1, $tgl2);
+}
 
 $output = array(
     "data" => array()
@@ -83,11 +74,6 @@ foreach ($rows as $row) {
     if ($row['STATUS_SELESAI'] == 0) {
         $status = 'Tanpa Keterangan';
     }
-    if ($user['U_LEVEL'] == 0 || $user['U_LEVEL'] == 1 || $user['U_LEVEL'] == 2 || $user['U_LEVEL'] == 3 || $user['U_LEVEL'] == 4) {
-        $edit = '<a href="edit-data-berkas.php?thn='.$row['THN_PELAYANAN'].'&bundel='.$row['BUNDEL_PELAYANAN'].'&urut='.$row['NO_URUT_PELAYANAN'].'" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>';
-        
-        $delete = '<button type="button" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></button>';
-    }
     $dataSeksi = $Getdata->_getRefSeksiPenerima($row['KD_SEKSI_BERKAS']);
     $data = array(
         $no++,
@@ -104,13 +90,10 @@ foreach ($rows as $row) {
         $status,
         $dataSeksi['NM_SEKSI'],
         $row['KETERANGAN_PST'],
-        $row['NIP_PENERIMA'],
-        $edit,
-        $delete
+        $row['NIP_PENERIMA']
     );
     $output['data'][] = $data;
 }
 
 echo json_encode($output);
-
-?> 
+?>

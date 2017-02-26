@@ -22,7 +22,7 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
    <link rel="stylesheet" href="../assets/plugin/responsive-datatable/fixedHeader.bootstrap.min.css">
    <link rel="stylesheet" href="../assets/plugin/responsive-datatable/responsive.bootstrap.min.css"> 
    <link rel="stylesheet" href="../assets/plugin/datepicker/css/datepicker.min.css">
-   <link rel="stylesheet" href="../assets/css/style.css"> 
+   <link rel="stylesheet" href="../assets/css/style.min.css"> 
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -47,7 +47,7 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
              <?php echo ucfirst($row['USERNAME']); ?> <span class="caret"></span>
             </a>
              <ul class="dropdown-menu">
-              <li><a href="javascript:void(0)"><i class="fa fa-user"></i> Profile</a></li>
+              <li><a href="profile.php"><i class="fa fa-user"></i> Profile</a></li>
               <li><a href="logout.php"><i class="fa fa-sign-out"></i> Log out</a></li> 
              </ul>
            </li> 

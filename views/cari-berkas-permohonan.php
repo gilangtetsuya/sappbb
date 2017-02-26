@@ -13,8 +13,8 @@ get_sidenav();
    </div> 
    <div class="container">
     <div class="row">
-     <div class="col-xs-6 col-md-4">
-      <form>
+     <div class="col-md-5">
+      <form method="post">
        <div class="form-group">
         <select id="method" class="form-control input-sm">
          <option value="">- Cari Berdasarkan -</option>   
@@ -54,7 +54,7 @@ get_sidenav();
           <div class="col-xs-2-7">
           <input type="text" name="kd_blok" maxlength="3" id="blok" class="form-control input-sm" placeholder="Blok" disabled>   
          </div>  
-         <div class="col-xs-3">
+         <div class="col-xs-2-8">
           <input type="text" name="no_urut" maxlength="4" id="no_urut" class="form-control input-sm" placeholder="No Urut" disabled>   
          </div>  
          <div class="col-xs-2">
@@ -84,7 +84,7 @@ get_sidenav();
          </div>
         </div>   
        </div>
-       <button type="submit" class="btn btn-primary btn-sm">Cari</button>
+       <button type="submit" name="cari" class="btn btn-primary btn-sm cariBerkas">Cari</button>
       </form>   
      </div>
      <div class="col-xs-6 col-md-4"></div>  
@@ -97,7 +97,7 @@ get_sidenav();
            Detail data berkas permohonan   
           </div>   
           <div class="panel-body">
-           <table id="table-1" class="display" cellspacing="0">
+           <table  class="table table-hover table-striped table-bordered table-condensed tsearch" cellspacing="0" width="100%">
              <thead>
               <tr>
                <th>No.</th>
@@ -112,10 +112,11 @@ get_sidenav();
                <th>NOP Baru</th>
                <th>Tgl Perkiraan (Selesai)</th>
                <th>Status</th>
+               <th>Seksi Penerima Berkas</th>
                <th>Ket.</th>
                <th>NIP Penerima</th>
               </tr>  
-             </thead>   
+             </thead> 
            </table>   
          </div>
         </div>   
@@ -123,5 +124,21 @@ get_sidenav();
     </div>
    </div>  
   </section>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+     <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Lampiran Dokumen</h4>
+      </div>
+      <div class="modal-body">
+        <ol class="js-lampiran">
+         
+        </ol>
+      </div>
+     </div>
+    </div> 
+   </div>
 
 <?php get_footer(); ?>

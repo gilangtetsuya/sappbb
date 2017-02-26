@@ -1,6 +1,7 @@
 
     <footer class="main-footer">
-     <span>Sistem Administrasi Pelayanan PBB v.1.0 &copy; <?php echo date('Y') ?> All rights reserved</span> 
+     <span>Support browser : Chrome 51.0.2704.103, Firefox 47.0 & Microsoft Edge 25.10586.0.0</span> 
+     <span>Sistem Administrasi Pelayanan PBB v.1.0 &copy; 2016 All rights reserved</span> 
     </footer> <!-- main footer -->
 
   <script src="../assets/js/jquery.min.js"></script>

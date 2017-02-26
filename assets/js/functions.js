@@ -13,9 +13,63 @@ function autotab(original,destination) {
     if (original.getAttribute&&original.value.length==original.getAttribute('maxlength'))
         destination.focus();
 }
-/**
- * General definitions
+/*
+ | General definitions
  */
+
+    function _getDataNjop () {
+       const inputEl  = document.querySelectorAll('input[type="text"]');
+       const tableEl = document.querySelectorAll('tbody tr td:last-child');
+
+       var prov  = inputEl[0].value;
+       var dati2 = inputEl[1].value;
+       var kec   = inputEl[2].value;
+       var kel   = inputEl[3].value;
+       var blok  = inputEl[4].value;
+       var urut  = inputEl[5].value;
+       var kode  = inputEl[6].value;
+       var thn   = inputEl[7].value;
+
+       if (prov == "" || dati2 == "" || kec == "" || kel == "" || blok == "" || urut == "" || kode == "" || thn == "") {
+           alert("Masukkan NOP dengan lengkap");
+           inputEl[0].focus();
+           return false;
+       } else {
+            var xhr  = new XMLHttpRequest();
+            var data = `prov=${prov}&dati2=${dati2}&kec=${kec}&kel=${kel}&blok=${blok}&urut=${urut}&kode=${kode}&thn=${thn}`;
+            var url  = "../app/lib-ajax/_getDataNjop.php?" + data;
+            xhr.open("GET", url, true);
+            xhr.onreadystatechange = function () {
+                var poll = window.setInterval(function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {         
+                    window.clearInterval(poll);
+                        var res = JSON.parse(xhr.responseText);
+                        for (var i = 0; i < tableEl.length; i++) {
+                            tableEl[i].innerHTML = res[i];
+                        }
+                    } else  {
+                        console.error("Error message: ", xhr.statusText);
+                    }
+                }, 40);
+            }  
+            xhr.send();
+       }
+    }
+
+    function _clearEL () {
+       const inputEl  = document.querySelectorAll('input[type="text"]'); 
+       const tableEl = document.querySelectorAll('tbody tr td:last-child'); 
+       Array.from(inputEl).forEach(i => {
+           i.value = "";
+           i.setAttribute('disabled', '');
+       });
+       Array.from(tableEl).forEach(t => {
+           t.innerHTML = ""; 
+       });
+       inputEl[0].removeAttribute('disabled');
+       inputEl[0].focus();
+    }
+
 /*
 | Validasi form
 */
@@ -182,6 +236,31 @@ function autotab(original,destination) {
             alert("Masukkan no pelayanan yang lengkap!");
             return false;
         } 
+   });
+
+   $('#cpass').on('click', function() {
+        var oldpass = $('#oldpass').val();
+        var newpass = $('#newpass').val();
+        var passconf = $('#passconf').val();
+        if (oldpass == "" || newpass == "" || passconf == "") {
+            alert("Semua field harus di isi!");
+            return false;
+        } else if (newpass != passconf) {
+            alert("Masukkan password baru yang valid!");
+            return false;
+        } else {
+            $.ajax({
+                type: "GET", 
+                url: "../app/lib-ajax/_updatePassword.php",
+                data: { newpass: newpass, oldpass: oldpass },
+                success: function(e) {
+                    alert(e);
+                    $('#oldpass').val("");
+                    $('#newpass').val("");
+                    $('#passconf').val("");
+                }   
+            });
+        }
    });
 
 }(jQuery);
@@ -392,6 +471,7 @@ function autotab(original,destination) {
             $(this).addClass('none');
         });    
         $(inputId1.join(", ")).attr('disabled', '');
+        $(inputId1.join(", ")).val("");
      }
      if (method.val() == '2') {
         $(formId[1]).fadeIn(300, function () {
@@ -403,6 +483,7 @@ function autotab(original,destination) {
             $(this).addClass('none');
         });    
         $(inputId2.join(", ")).attr('disabled', '');
+        $(inputId2.join(", ")).val("");
      }
      if (method.val() == '3') {
         $(formId[2]).fadeIn(300, function () {
@@ -414,6 +495,7 @@ function autotab(original,destination) {
             $(this).addClass('none');
         });    
         $(inputId3).attr('disabled', '');
+        $(inputId3).val("");
      }
      if (method.val() == '4') {
         $(formId[3]).fadeIn(300, function () {
@@ -425,7 +507,88 @@ function autotab(original,destination) {
             $(this).addClass('none');
         });    
         $(inputId4.join(", ")).attr('disabled', '');
+        $(inputId4.join(", ")).val("");
      }
   }
+
+  $('.cariBerkas').on('click', function() {
+      if (method.val() == '1') {
+
+          var t = $('#tahun').val();
+          var b = $('#bundel').val();
+          var u = $('#urut').val();
+        
+           var tByNoPelayanan = $('.tsearch').DataTable({
+                responsive: true,
+                destroy: true,
+                "processing": true,
+                "serverside": true,
+                "ajax": `../app/lib-ajax/_cariDataBerkas.php?type=1&tahun=${t}&bundel=${b}&urut=${u}`
+           });
+          
+          new $.fn.dataTable.FixedHeader( tByNoPelayanan );
+          
+          return false;
+
+      } else if (method.val() == '2') {
+           
+           var prov = $('#prov').val();
+           var dati2 = $('#dati2').val();
+           var kec = $('#kec').val();
+           var kel = $('#kel').val();
+           var blok = $('#blok').val();
+           var noUrut = $('#no_urut').val();
+           var jnsOp = $('#jns_op').val();
+
+           var tByNoPelayanan = $('.tsearch').DataTable({
+                responsive: true,
+                destroy: true,
+                "processing": true,
+                "serverside": true,
+                "ajax": `../app/lib-ajax/_cariDataBerkas.php?type=2&prov=${prov}&dati2=${dati2}&kec=${kec}&kel=${kel}&blok=${blok}&nourut=${noUrut}&jnsop=${jnsOp}`
+           });
+          
+           new $.fn.dataTable.FixedHeader( tByNoPelayanan );
+          
+           return false;
+
+      } else if (method.val() == '3') {
+           
+           var namaPemohon = $('#pemohon').val()
+
+           var tByNoPelayanan = $('.tsearch').DataTable({
+                responsive: true,
+                destroy: true,
+                "processing": true,
+                "serverside": true,
+                "ajax": `../app/lib-ajax/_cariDataBerkas.php?type=3&pemohon=${namaPemohon}`
+           });
+          
+           new $.fn.dataTable.FixedHeader( tByNoPelayanan );
+          
+           return false;
+
+      } else if (method.val() == '4') {
+
+           var tgl1 = $('#date-1').val();
+           var tgl2 = $('#date-2').val();
+
+           var tByNoPelayanan = $('.tsearch').DataTable({
+                responsive: true,
+                destroy: true,
+                "processing": true,
+                "serverside": true,
+                "ajax": `../app/lib-ajax/_cariDataBerkas.php?type=4&tgl_1=${tgl1}&tgl_2=${tgl2}`
+           });
+          
+           new $.fn.dataTable.FixedHeader( tByNoPelayanan );             
+
+           return false;
+      } else {
+          alert("Pilih jenis pencarian!");
+          return false;
+      }
+      
+  });
 
 }(jQuery);

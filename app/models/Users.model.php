@@ -172,4 +172,14 @@ class Users {
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
+    public function _changePass($newpass, $id) {
+        $query = $this->db->prepare("UPDATE pst_pengguna SET password = :npass WHERE id = :u_id");
+        $query->bindParam(':npass', $newpass);
+        $query->bindParam(':u_id', $id);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    }
 }

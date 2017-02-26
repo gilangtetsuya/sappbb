@@ -216,11 +216,14 @@ label {
     left: 0;
     padding: 8px;
 }
-.login-footer span:nth-child(1) {
+.login-footer span:nth-child(2) {
     float: right;
     font-size: 90%;
-    letter-spacing: 1px;
-    color: #666;
+    color: #555;
+}
+.login-footer span:nth-child(1) {
+    font-size: 90%;
+    color: #555;
 }
 .bg-blue {
     background-color: #283593;
@@ -437,6 +440,12 @@ label {
     z-index: -1;
 }
 .main-footer span:nth-child(1) {
+    float: left;
+    margin-left: 230px;
+    font-size: 88%;
+    color: #fff;
+}
+.main-footer span:nth-child(2) {
     float: right;
     font-size: 88%;
     color: #fff;
@@ -469,6 +478,20 @@ div.dataTables_wrapper div.dataTables_filter {
 }
 .modal-content {
   border-radius: 0;  
+}
+.list-group > li > span {
+  display: inline-block;
+  width: 100px;
+  font-weight: 400;  
+}
+.jumbotron {
+    border-radius: 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4); 
+}
+.jumbotron img {
+    width: 93px;
+    height: 108px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 @media screen and (max-width: 1760px) {
     table.display > thead > tr > th {
@@ -504,6 +527,12 @@ div.dataTables_wrapper div.dataTables_filter {
         font-size: 160%;    
         font-weight: 400;
         text-align: right;
+    }
+    table.table > thead > tr > th {
+        font-size: 80%;
+    }
+    table.table > tbody > tr > td {
+        font-size: 75%;
     }
 }
 /* media query for mobile display */
@@ -649,7 +678,7 @@ table.tnjop > tbody > tr > td:last-child {
         display: none;
     }
     .title-print {
-        font-size: 150%;
+        font-size: 120%;
         display: block;
         text-transform: uppercase;
         text-align: center;

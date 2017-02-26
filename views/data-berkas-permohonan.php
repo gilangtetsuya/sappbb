@@ -3,6 +3,7 @@ require_once '../app/init.php';
 $data = [
    'title' => 'Data Berkas Permohonan'
 ];
+$user = $Users->_getDataUsersById($_SESSION['user_sap']);
 get_header($data);
 get_sidenav();
 ?>
@@ -12,6 +13,7 @@ get_sidenav();
     <i class="fa fa-list-alt fa-fw"></i> <span>Data Berkas Permohonan</span>   
    </div> 
    <div class="container">
+   <?php if ($user['U_LEVEL'] == 0 || $user['U_LEVEL'] == 1 || $user['U_LEVEL'] == 2 || $user['U_LEVEL'] == 3 || $user['U_LEVEL'] == 4): ?>  
     <div class="btn-group pull-right" role="group" aria-label="table-action">
      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Pilihan <span class="caret"></span></button>
      <ul class="dropdown-menu">
@@ -19,6 +21,7 @@ get_sidenav();
       <li><a href="excel_data_berkas.php?zona=<?php echo $_GET['z']; ?>&tahun=<?php echo $_GET['t']; ?>"><i class="fa fa-file-excel-o fa-fw"></i> Export ke Excel</a></li>   
      </ul>   
     </div>
+    <?php endif; ?>
     <input type="hidden" class="zona" value="<?php echo $_GET['z']; ?>">
     <input type="hidden" class="tahun" value="<?php echo $_GET['t']; ?>">
     <div class="row">
@@ -46,8 +49,10 @@ get_sidenav();
              <th>Seksi Penerima Berkas</th>
              <th>Ket.</th>
              <th>NIP Penerima</th> 
+             <?php if ($user['U_LEVEL'] == 0 || $user['U_LEVEL'] == 1 || $user['U_LEVEL'] == 2 || $user['U_LEVEL'] == 3 || $user['U_LEVEL'] == 4): ?> 
              <th>Edit</th> 
              <th>Hapus</th>  
+             <?php endif; ?>
            </tr>  
          </thead> 
          <tfoot>
@@ -67,8 +72,10 @@ get_sidenav();
              <th>Seksi Penerima Berkas</th>
              <th>Ket.</th>
              <th>NIP Penerima</th> 
+             <?php if ($user['U_LEVEL'] == 0 || $user['U_LEVEL'] == 1 || $user['U_LEVEL'] == 2 || $user['U_LEVEL'] == 3 || $user['U_LEVEL'] == 4): ?>
              <th>Edit</th> 
              <th>Hapus</th>  
+             <?php endif; ?>
            </tr> 
         </tfoot>  
         </table> 

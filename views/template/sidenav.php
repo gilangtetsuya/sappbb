@@ -28,10 +28,13 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
     <?php endif; ?>
     </li>
     <li><a href="index.php"><span class="fa fa-home fa-fw"></span> Dashboard</a></li>
-    <li><a href="input-permohonan.php"><span class="fa fa-plus fa-fw"></span> Input Permohonan</a></li>
+    <?php if ($row['U_LEVEL'] == 0 || $row['U_LEVEL'] == 5): ?>
+     <li><a href="input-permohonan.php"><span class="fa fa-plus fa-fw"></span> Input Permohonan</a></li>
+    <?php endif; ?>
     <li>
      <a href="javascript:void(0)" id="menu-toggle"><span class="fa fa-list-alt fa-fw"></span> Data Berkas Permohonan <span class="caret"></span></a>
      <ul class="sidenav-sub-menu">
+      <?php if ($row['U_LEVEL'] == 0 || $row['U_LEVEL'] == 1 || $row['U_LEVEL'] == 5): ?> 
       <li>
         <a href="javascript:void(0)" id="menu-toggle">Zona 1</a>
         <ul class="sidenav-sub-menu-tree">
@@ -42,6 +45,10 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
           <li><a href="data-berkas-permohonan.php?z=1&t=2017">2017</a></li>
         </ul>  
       </li> 
+      <?php 
+        endif; 
+        if ($row['U_LEVEL'] == 0 || $row['U_LEVEL'] == 2 || $row['U_LEVEL'] == 5):
+      ?>
       <li>
         <a href="javascript:void(0)" id="menu-toggle">Zona 2</a>
         <ul class="sidenav-sub-menu-tree">
@@ -52,6 +59,10 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
           <li><a href="data-berkas-permohonan.php?z=2&t=2017">2017</a></li>
         </ul>  
       </li>
+      <?php 
+        endif; 
+        if ($row['U_LEVEL'] == 0 || $row['U_LEVEL'] == 3 || $row['U_LEVEL'] == 5):
+       ?>
       <li>
         <a href="javascript:void(0)" id="menu-toggle">Zona 3</a>
         <ul class="sidenav-sub-menu-tree">
@@ -62,6 +73,10 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
           <li><a href="data-berkas-permohonan.php?z=3&t=2017">2017</a></li>
         </ul> 
       </li>
+      <?php 
+        endif;
+        if ($row['U_LEVEL'] == 0 || $row['U_LEVEL'] == 4 || $row['U_LEVEL'] == 5): 
+      ?>
       <li>
         <a href="javascript:void(0)" id="menu-toggle">Zona 4</a>
         <ul class="sidenav-sub-menu-tree">
@@ -72,12 +87,17 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
           <li><a href="data-berkas-permohonan.php?z=4&t=2017">2017</a></li>
         </ul> 
       </li>
+     <?php endif; ?>
      </ul>
     </li>
     <li><a href="cari-berkas-permohonan.php"><span class="fa fa-search fa-fw"></span> Cari Berkas Permohonan</a></li>
     <li><a href="cek-info-njop.php"><span class="fa fa-info-circle fa-fw"></span> Cek Info NJOP</a></li>
+    <?php if ($row['U_LEVEL'] == 0 || $row['U_LEVEL'] == 5): ?>
     <li><a href="cetak-tanda-terima.php"><span class="fa fa-print fa-fw"></span> Cetak Tanda Terima</a></li>
+    <?php endif; ?>
+    <?php if ($row['U_LEVEL'] == 0 || $row['U_LEVEL'] == 1 || $row['U_LEVEL'] == 2 || $row['U_LEVEL'] == 3 || $row['U_LEVEL'] == 4): ?>  
     <li><a href="cek-nop-terbesar.php"><span class="fa fa-sort-numeric-asc fa-fw"></span> Cek Nop Terbesar</a></li>
+    <?php endif; ?>
    <?php if ($row['U_LEVEL'] == 0): ?>
     <li>
      <a href="javascript:void(0)" id="menu-toggle"><span class="fa fa-users fa-fw"></span> Admin Menu <span class="caret"></span></a>
@@ -88,7 +108,7 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
      </ul>
     </li>
     <?php endif; ?>
-    <li><a href="javascript:void(0)"><span class="fa fa-info fa-fw"></span> About</a></li>
+    <li><a href="about.php"><span class="fa fa-info fa-fw"></span> About</a></li>
   </ul> 
  </nav>  
 </aside> <!-- sidenav -->

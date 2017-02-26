@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
    <title>SAP | Login</title>
    <link rel="icon" type="iamge/x-icon" href="./assets/img/favicon.ico">
    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-   <link rel="stylesheet" href="./assets/css/style.css"> 
+   <link rel="stylesheet" href="./assets/css/style.min.css"> 
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -67,7 +67,8 @@ if (isset($_POST['login'])) {
    </div>
 
    <footer class="login-footer">
-    <span>Sistem Administrasi Pelayanan PBB &copy; <?php echo date('Y') ?> All rights reserved</span>   
+    <span>Support browser : Chrome 51.0.2704.103, Firefox 47.0 & Microsoft Edge 25.10586.0.0</span> 
+    <span>Sistem Administrasi Pelayanan PBB v.1.0 &copy; 2016 All rights reserved</span>   
    </footer>
 
   <script src="./assets/js/jquery.min.js"></script>
