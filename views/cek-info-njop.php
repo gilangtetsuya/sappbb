@@ -6,338 +6,128 @@ $data = [
 get_header($data);
 get_sidenav();
 ?>
- 
- <style>
-   .row label {
-      font-size: 92%;
-      font-weight: 300;
-   }    
- </style>
 
  <section class="main-content">
   <div class="title-content">
    <i class="fa fa-info-circle fa-fw"></i> <span>Cek Info NJOP</span>   
   </div>
   <div class="container">
-   <div class="row">
-    <div class="col-xs-12 col-md-8">
-     <div class="panel panel-primary">
-      <div class="panel-heading">
-       Detail informasi data NJOP   
-      </div>   
-      <div class="panel-body">
-       <form name="f3">
+     <div class="row">  
+     <div class="col-sm-12">
+      <h2 class="title-print">
+        <img src="../assets/img/logo.png" alt="">    
+      </h2>   
+      <h2 class="title-print">Informasi NJOP PBB</h2>
+      <h2 class="title-print">badan pendapatan kota makassar</h2>   
+      <div class="panel panel-default">
+       <div class="panel-heading">
+         Detail informasi njop
+       </div>
+       <div class="panel-body">
         <div class="form-group">
          <div class="row">
+          <div class="col-xs-2-3">
+           <label for="kd_prov" style="margin-top: 5px;">NOP</label>     
+          </div>  
           <div class="col-xs-2-4">
-           <input type="text" name="kd_prov" maxlength="2"  class="form-control input-sm" placeholder="Prov">   
+           <input type="text" name="kd_prov" maxlength="2"  class="form-control input-sm">   
           </div> 
           <div class="col-xs-2-4">
-           <input type="text" name="kd_dati2" maxlength="2" class="form-control input-sm" placeholder="Dati2" disabled>   
+           <input type="text" name="kd_dati2" maxlength="2" class="form-control input-sm" disabled>   
           </div> 
           <div class="col-xs-2-4">
-           <input type="text" name="kd_kec" maxlength="3" class="form-control input-sm" placeholder="Kec" disabled>   
+           <input type="text" name="kd_kec" maxlength="3" class="form-control input-sm" disabled>   
           </div> 
           <div class="col-xs-2-4">
-           <input type="text" name="kd_kel" maxlength="3" class="form-control input-sm" placeholder="Kel" disabled>   
+           <input type="text" name="kd_kel" maxlength="3" class="form-control input-sm" disabled>   
           </div> 
           <div class="col-xs-2-4">
-           <input type="text" name="kd_blok" maxlength="3" class="form-control input-sm" placeholder="Blok" disabled>   
+           <input type="text" name="kd_blok" maxlength="3" class="form-control input-sm" disabled>   
           </div>
           <div class="col-xs-2-5">
-           <input type="text" name="no_urut" maxlength="4" class="form-control input-sm" placeholder="No urut" disabled>   
+           <input type="text" name="no_urut" maxlength="4" class="form-control input-sm" disabled>   
           </div>   
           <div class="col-xs-2-4">
-           <input type="text" name="kd_jns_op" maxlength="1" class="form-control input-sm" placeholder="Kode" disabled>   
+           <input type="text" name="kd_jns_op" maxlength="1" class="form-control input-sm" disabled>   
           </div>
-          <div class="col-xs-2-5 pull-right">
-           <input type="text" name="thn_pajak" maxlength="4" class="form-control input-sm" placeholder="Tahun" disabled>   
-          </div>
-         </div>   
-        </div>
-        <legend></legend>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-2-5">
-           <label class="text-muted" style="margin-top: 5px;font-weight: 300;text-align: right;">Letak Objek Pajak : </label>   
-          </div>
-          <div class="col-md-4" style="margin-left: -25px;">
-           <input type="text" name="letak_op" class="form-control input-sm" readonly disabled>   
-          </div>
-          <div class="col-md-4 pull-right">
-           <input type="text" name="letak_op" class="form-control input-sm" readonly>   
-          </div>  
-          <div class="col-sm-2-5 pull-right" style="right: -71px;">
-           <label class="text-muted" style="margin-top: 5px;font-weight: 300;">Nama WP : </label>   
-          </div>
-         </div>   
-        </div>   
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-2-5">
-           <label class="text-muted" style="margin-top: 8px;font-weight: 300;text-align: right;">RT / RW : </label>   
-          </div>   
-          <div class="col-xs-2-4">
-           <input type="text" name="rt" class="form-control input-sm" readonly>   
-          </div>
-          <div class="col-xs-2-4">
-           <input type="text" name="rt" class="form-control input-sm" readonly>   
-          </div>
-          <div class="col-md-4 pull-right">
-           <input type="text" name="letak_wp" class="form-control input-sm" readonly>   
-          </div>
-          <div class="col-sm-2-5 pull-right" style="right: -20px;">
-           <label class="text-muted" style="margin-top: 5px;font-weight: 300; text-align: right;">Alamat WP : </label>   
-          </div>
-         </div>   
-        </div> 
-        <legend></legend>
-        <div class="form-group" style="margin-bottom: 0;text-align: center;">
-         <div class="row">
-          <div class="col-sm-2-5"></div>
-          <div class="col-xs-3">
-           <label class="text-muted">Luas</label>
+          <div class="col-xs-2-3">
+           <label for="thn_pajak" style="margin-top: 5px;">Tahun</label>   
           </div>
           <div class="col-xs-2-5">
-           <label class="text-muted">Kelas</label>   
-          </div>  
-          <div class="col-xs-3">
-           <label class="text-muted">NJOP Per m2</label>   
-          </div> 
-           <div class="col-xs-3-5">
-           <label class="text-muted">Total NJOP</label>
-          </div>   
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-2-5">
-           <label class="text-muted" style="margin-top: 5px;">Bumi</label>  
+           <input type="text" name="thn_pajak" maxlength="4" class="form-control input-sm" disabled>   
           </div>
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly>   
+          <div class="col-xs-2-4 pull-right">
+            <button type="button" class="btn btn-sm btn-primary">Cek Info</button>
           </div>
-          <div class="col-xs-2-5">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>  
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div> 
-           <div class="col-xs-3-5">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-2-5">
-           <label class="text-muted" style="margin-top: 5px;">Bangunan</label>     
-          </div>
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>
-          <div class="col-xs-2-5">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>  
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div> 
-           <div class="col-xs-3-5">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-2-5">
-           <label class="text-muted" style="margin-top: 5px;">Bumi Bersama</label>     
-          </div>
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>
-          <div class="col-xs-2-5">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>  
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div> 
-           <div class="col-xs-3-5">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-2-5">
-            <label class="text-muted" style="margin-top: 5px;">Bangunan Bersama</label>    
-          </div>
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>
-          <div class="col-xs-2-5">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>  
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div> 
-           <div class="col-xs-3-5">
-           <input type="text" class="form-control input-sm" readonly>   
-          </div>
-         </div>   
-        </div>
-        <legend></legend>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">Jumlah NJOP Bumi</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">Jumlah NJOP Bangunan</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">NJOP Sebagai Dasar Pengenaan PBB</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">NJOPTKP</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">Pajak Bumi Dan Bangunan Terhutang</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">Faktor Pengurang</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">PBB Yang Harus Di Bayar</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">Denda Yang Telah Di Bayar</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-4 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">PBB Yang Telah Di Bayar</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-xs-1 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">Selisih</label>
-          </div>  
-          <div class="col-xs-2 pull-left">
-           <label class="text-muted _txt-selisih" style="margin-top: 10px;color: #aaa;"></label>  
-          </div>
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-sm-5 pull-left">
-            <label class="text-muted" style="margin-top: 10px;">Tanggal Jatuh Tempo/Tempat Pembayaran</label> 
-          </div>  
-          <div class="col-xs-3-5 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-          <div class="col-xs-2 pull-right">
-            <input type="text" name="j_njop" class="form-control input-sm" readonly>
-          </div>
-         </div>   
-        </div>
-        <legend></legend>
-        <div class="form-group">
-         <div class="row">
-          <div class="col-xs-2-6">
-            <label class="text-muted" style="margin-top: 6px;">Tanggal Terbit</label> 
-          </div>    
-          <div class="col-xs-2">
-           <input type="text" class="form-control input-sm" readonly> 
-          </div>
-          <div class="col-xs-2-6">
-            <label class="text-muted" style="margin-top: 6px;">Tanggal Cetak</label> 
-          </div>    
-          <div class="col-xs-2">
-           <input type="text" class="form-control input-sm" readonly> 
-          </div>
-          <div class="col-xs-2-6">
-            <label class="text-muted" style="margin-top: 6px;">NIP Pencetak</label> 
-          </div>    
-          <div class="col-xs-3">
-           <input type="text" class="form-control input-sm" readonly> 
-          </div>
-         </div>  
-        </div>
-        <legend></legend>
-        <button type="button" class="btn btn-sm btn-primary"><i class="fa fa-print"></i> Cetak</button>
-        <button type="reset" class="btn btn-sm btn-primary">Reset</button>
-       </form>    
-      </div>
-     </div>   
-    </div>
-    <div class="col-xs-6 col-md-4"></div>   
-   </div>   
+         </div>    
+        </div>    
+       </div> 
+       <table class="table table-hover table-bordered table-striped tnjop" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th style="text-align: right;">Title</th>
+            <th>Nilai</th>
+          </tr>
+        </thead>   
+        <tbody>
+          <tr>
+           <td>Nama Wajib Pajak :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Alamat Wajib Pajak :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Letak objek Pajak :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Luas Bumi :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Njop Bumi per m2 :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Luas Bangunan :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Njop Bangunan per m2 :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Total Njop Bumi :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Total Njop Bangunan :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+            <td>NJOP Sebagai Dasar Pengenaan PBB :</td>
+            <td width="50%"></td>   
+          </tr>
+        </tbody>
+       </table> 
+       <div class="panel-footer">
+         <button type="button" class="btn btn-sm btn-primary">Print</button>  
+       </div>
+      </div>    
+      <div class="row el-print">
+        <div class="col-xs-3 pull-right">
+         <p class="text-muted" style="margin-bottom: 70px;margin-top: 10px;">Petugas pencetak</p>    
+         <p class="text-muted">NIP:</p>
+        </div>    
+      <div>
+     </div>     
+    </div> 
   </div>   
  </section>
 
- <script>
+ <!--<script>
    const inputEl  = document.querySelectorAll('input[type="text"]');
    const outputEl = document.querySelectorAll('input[readonly]');
    const txtEl = document.querySelector('._txt-selisih');
@@ -440,6 +230,6 @@ get_sidenav();
        txtEl.innerHTML = "";
        inputEl[0].focus();
     }
- </script>
+ </script>-->
 
 <?php get_footer(); ?>

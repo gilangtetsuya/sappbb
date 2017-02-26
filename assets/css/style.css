@@ -107,15 +107,18 @@ label {
     margin-left: -23px;
 }
 .col-xs-2-5, .col-sm-2-4, .col-xs-2-7, .col-xs-2-4, .col-sm-2-5, .col-sm-2-6,
-.col-xs-3-5, .col-xs-2-6, .col-xs-2-8, .col-xs-2-9 {
+.col-xs-3-5, .col-xs-2-6, .col-xs-2-8, .col-xs-2-9, .col-xs-2-3 {
    position: relative;
    min-height: 1px;
    padding-right: 15px;
    padding-left: 15px;
 }
 .col-xs-2-5, .col-sm-2-4, .col-xs-2-7, .col-xs-2-4, .col-sm-2-5, .col-sm-2-6,
-.col-xs-3-5, .col-xs-2-6, .col-xs-2-8, .col-xs-2-9 {
+.col-xs-3-5, .col-xs-2-6, .col-xs-2-8, .col-xs-2-9, .col-xs-2-3 {
     float: left;
+}
+.col-xs-2-3 {
+    width: 7%;
 }
 .col-xs-2-4 {
     width: 10%;
@@ -596,5 +599,75 @@ div.dataTables_wrapper div.dataTables_filter {
     }
     .login-footer {
         text-align: center;
+    }
+}
+/* Print njop style */
+ table.tnjop > tbody > tr > td:first-child {
+    text-align: right;
+}
+table.tnjop > tbody > tr > td:last-child {
+    text-align: left;
+}
+.title-print {
+    display: none;
+}
+.el-print {
+    display: none;
+}
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        display: none; 
+    }
+    aside {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+    .sidenav {
+        display: none;
+    }
+    .main-content {
+        margin: 0;
+        padding: 0;
+        top: 0;
+    }
+    .title-content {
+        display: none;
+    }
+    .el-print {
+        display: block;
+    }
+    .panel-heading, .panel-body {
+        display: none;
+    }
+    .panel-footer {
+        display: none;
+    }
+    .title-print {
+        font-size: 150%;
+        display: block;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    .table {
+        margin-top: 20px;  
+    }
+    .table > tbody > tr {
+        border-left: 1px solid #ccc;
+        /*border-bottom: 2px solid #ccc;*/
+    }
+    .table > thead > tr {
+        border-left: 1px solid #ccc;
+    }
+    .title-print img {
+        width: 48px;
+        height: 55px;
+        /*filter: grayscale(100%);*/
     }
 }

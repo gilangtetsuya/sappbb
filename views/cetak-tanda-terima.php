@@ -23,13 +23,13 @@ get_sidenav();
          <div class="form-group">
           <div class="row">
            <div class="col-xs-4">
-            <input type="text" name="thn_p" class="form-control input-sm thn" placeholder="Tahun">   
+            <input type="text" name="thn_p" maxlength="4" class="form-control input-sm thn" placeholder="Tahun">   
            </div>   
             <div class="col-xs-4">
-            <input type="text" name="bundel_p" class="form-control input-sm bundel" placeholder="Bundel">   
+            <input type="text" name="bundel_p" maxlength="4" class="form-control input-sm bundel" placeholder="Bundel" disabled>   
            </div>   
             <div class="col-xs-4">
-            <input type="text" name="no_urut_p" class="form-control input-sm urut" placeholder="Urut">   
+            <input type="text" name="no_urut_p" maxlength="3" class="form-control input-sm urut" placeholder="Urut" disabled>   
            </div>   
           </div>   
          </div>
@@ -44,5 +44,26 @@ get_sidenav();
     </div>   
    </div>
   </section>
+
+  <script>
+    const inputEl = document.querySelectorAll('input[type="text"]');
+    
+    Array.from(inputEl).forEach(i => {
+        i.addEventListener('keyup', this.handleEvent.bind(this));
+    });
+    
+    function handleEvent(evt) {
+        const el = evt.target;
+        if (el.value.length == el.getAttribute('maxlength')) {
+            for (var i = 0; i < inputEl.length; i++) {
+               if (inputEl[i].value.length == el.getAttribute('maxlength')) {
+                  var next = inputEl[i + 1];
+               }
+            }
+            next.removeAttribute('disabled');
+            next.focus();
+        }
+    }
+  </script>
 
 <?php get_footer(); ?>
