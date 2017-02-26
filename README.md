@@ -6,11 +6,11 @@ Sistem Administarsi Pelayanan PBB (SAP PBB) adalah pengembaangan dari aplikasi S
 
 #Features :
 
-*Login System
-*Monitoring Berkas Permohonan PBB
-*Input Data Permohonan 
-*Cetak Tanda Terima Permohonan
-*Data Berkas Permohonan
+- Login System
+- Monitoring Berkas Permohonan PBB
+- Input Data Permohonan 
+- Cetak Tanda Terima Permohonan
+- Data Berkas Permohonan
  - Zona 1 (Wilayah 1) 
  - Zona 2 (Wilayah 2)
  - Zona 3 (Wilayah 3)
@@ -20,8 +20,8 @@ Sistem Administarsi Pelayanan PBB (SAP PBB) adalah pengembaangan dari aplikasi S
  - By No.Pelayanan
  - By Nama Pemohon
  - By NOP
-*Import Data berkas permohonan ke file Excel
-*Tampilan Yang Responsive
+- Import Data berkas permohonan ke file Excel
+- Tampilan Yang Responsive
 
 #License 
 
