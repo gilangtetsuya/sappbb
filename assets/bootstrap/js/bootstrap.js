@@ -113,7 +113,7 @@ if (typeof jQuery === 'undefined') {
 
     if (e) e.preventDefault()
 
-    if (!$parent.length) {
+    if (!$parent.length) {  
       $parent = $this.closest('.alert')
     }
 

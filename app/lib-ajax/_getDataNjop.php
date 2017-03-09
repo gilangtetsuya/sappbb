@@ -19,6 +19,8 @@ $njop_bng = ($data1['NJOP_BNG'] != 0 && $data1['TOTAL_LUAS_BNG'] != 0) ? ($data1
 $njop_pbb = ($data1['NJOP_BUMI'] + $data1['NJOP_BNG']);
 
 $result = array(
+   $data['kd_prov'] . "." . $data['kd_dati2'] . "." . $data['kd_kec'] . "." . $data['kd_kel'] . "." . $data['kd_blok'] . " - " . $data['no_urut'] . "." . $data['kd_jns_op'],
+   $data['thn_pajak'],
    $data1['NM_WP'], 
    $data1['JALAN_WP'] . " " . $data1['BLOK_KAV_NO_WP'],
    $data1['JALAN_OP'] . " " . $data1['BLOK_KAV_NO_OP'],

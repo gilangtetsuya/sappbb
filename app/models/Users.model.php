@@ -182,4 +182,52 @@ class Users {
             die("INTERNAL ERROR CONNECTION!");
         }
     }
+    public function _addLogSession($id, $username) {
+        $timeLog = time();
+        $query = $this->db->prepare("INSERT INTO pst_log_session VALUES(:u_id, :name, :time)");
+        $query->bindParam(':u_id', $id);
+        $query->bindParam(':name', $username);
+        $query->bindParam(':time', $timeLog);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    }
+    public function _cekLogExists($id, $username) {
+        $query = $this->db->prepare("SELECT COUNT(id) FROM pst_log_session WHERE id = :u_id AND username = :name");
+        $query->bindParam(':u_id', $id);
+        $query->bindParam(':name', $username);
+        try {
+            $query->execute();
+            $row = $query->fetchColumn();
+            if ($row == 1) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    }
+    public function _updateLogSession($id, $time) {
+        $query = $this->db->prepare("UPDATE pst_log_session SET time_log = :u_time WHERE id = :u_id");
+        $query->bindParam(':u_time', $time);
+        $query->bindParam(':u_id', $id);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    }
+    public function _delLogSession($id, $time) {
+        $query = $this->db->prepare("DELETE FROM pst_log_session WHERE id = :u_id AND time_log = :u_time");
+        $query->bindParam(':u_id', $id);
+        $query->bindParam(':u_time', $time);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    }
 }

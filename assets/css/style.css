@@ -643,6 +643,9 @@ table.tnjop > tbody > tr > td:last-child {
 .el-print {
     display: none;
 }
+.table > tbody > tr.row_p {
+    display: none;
+}
 @media print {
     body {
         margin: 0;
@@ -698,5 +701,8 @@ table.tnjop > tbody > tr > td:last-child {
         width: 48px;
         height: 55px;
         /*filter: grayscale(100%);*/
+    }
+    .table > tbody > tr.row_p {
+        display: table-row;
     }
 }

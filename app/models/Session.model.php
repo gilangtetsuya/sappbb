@@ -1,7 +1,7 @@
 <?php 
 error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
 // Create session users
-class Session {
+class Session extends Users {
     // instance session 
     function _loggedId() {
         return (isset($_SESSION['user_sap']) && !empty($_SESSION['user_sap'])) ? true : false;
@@ -19,5 +19,28 @@ class Session {
             header("Location: views/");
             exit();
         } 
+    }
+
+    public function _loginLimitTime() {
+        $time = time();
+        $timeLimit = $_SESSION['user_time'] + (60 * 60);
+        if ($time > $timeLimit) {
+            $this->_delLogSession($_SESSION['user_sap'], $_SESSION['user_time']);
+            $this->_logUsers($_SESSION['user_sap'], "logout ke sistem");
+            session_destroy();
+            echo '<script>alert("Session anda telah berakhir, silahkan login kembali!");document.location="../";</script>';
+        } else {
+            $_SESSION['user_time'] = $time;
+            $this->_updateLogSession($_SESSION['user_sap'], $_SESSION['user_time']);
+        }
+    }
+
+    public function _loginExists() {
+        $id = $_SESSION['user_sap'];
+        $time = $_SESSION['user_time'];
+        $this->_delLogSession($id, $time);
+        session_destroy();
+        echo '<script>alert("Seseorang sedang login dengan akun ini!");document.location="../";</script>'; 
+        exit();
     }
 }

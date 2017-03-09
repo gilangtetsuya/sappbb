@@ -65,6 +65,14 @@ get_sidenav();
        </div> 
        <table class="table table-hover table-condensed table-bordered table-striped tnjop" cellspacing="0" width="100%">   
         <tbody>
+          <tr class="row_p">
+           <td>NOP :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr class="row_p">
+           <td>Tahun Pajak :</td>
+           <td width="50%"></td>   
+          </tr>
           <tr>
            <td>Nama Wajib Pajak :</td>
            <td width="50%"></td>   

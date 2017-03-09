@@ -2,9 +2,14 @@
 require '../app/database/db_oci.php';
 require_once '../app/models/Session.model.php';
 require_once '../app/models/Users.model.php';
-$session = new Session;
+$session = new Session($link);
 $users = new Users($link);
 $session->_loginProtect();
+if ($users->_cekLogExists($_SESSION['user_sap'], $_SESSION['user_name']) === false) {
+    $session->_loginExists();
+} else {
+    $session->_loginLimitTime();
+}
 $row = $users->_getDataUsersById($_SESSION['user_sap']);
 ?>
 <!DOCTYPE html>

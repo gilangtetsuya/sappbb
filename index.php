@@ -14,8 +14,10 @@ if (isset($_POST['login'])) {
            echo '<script>alert("Masukkan username atau password yang valid!");</script>';
         } else {
            $_SESSION['user_sap'] = $login;
+           $_SESSION['user_name'] = $username;
+           $_SESSION['user_time'] = time();
+           $Users->_addLogSession($login, $username);
            $Users->_logUsers($login, "login ke sistem!");
-           echo $login;
            header('Location: views/');
         }
     }

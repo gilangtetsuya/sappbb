@@ -71,8 +71,8 @@ class Insert {
         // execute query
         try {
             $query->execute();
-        } catch (PDOExcpetion $e) {
-            die("INTERNAL ERROR CONNECTION");
+        } catch (PDOException $e) {
+            die("INTERNAL CONNECTION ERROR");
         }
     }
     // insert to table pst_lampiran
@@ -178,8 +178,8 @@ class Insert {
         // execute query
         try {
             $query->execute();
-        } catch (PDOExcpetion $e) {
-            die("INTERNAL ERROR CONNECTION");
+        } catch (PDOException $e) {
+            die("INTERNAL CONNECTION ERROR");
         }
     }
     // insert to table pst_detail
@@ -253,8 +253,8 @@ class Insert {
         // execute query 
         try {
             $query->execute();
-        } catch (PDOExcpetion $e) {
-            die("INTERNAL ERROR CONNECTION");
+        } catch (PDOException $e) {
+            die("INTERNAL CONNECTION ERROR");
         }
     }
     // insert to table pst_data_op_baru
@@ -322,8 +322,8 @@ class Insert {
         // execute query
         try {
             $query->execute();
-        } catch (PDOExcpetion $e) {
-            die("INTERNAL ERROR CONNECTION");
+        } catch (PDOException $e) {
+            die("INTERNAL CONNECTION ERROR");
         }
     }
     // insert to table pst_permohonan_pengurangan
@@ -391,8 +391,8 @@ class Insert {
         // execute query
         try {
             $query->execute();
-        } catch (PDOExcpetion $e) {
-            die("INTERNAL ERROR CONNECTION");
+        } catch (PDOException $e) {
+            die("INTERNAL CONNECTION ERROR");
         }
     }
     // select data objek pajak for insert to table temp_data_op
@@ -421,8 +421,8 @@ class Insert {
         // execute query 
         try {
             $query->execute();
-        } catch (PDOExcpetion $e) {
-            die("INTERNAL ERROR CONNECTION");
+        } catch (PDOException $e) {
+            die("INTERNAL CONNECTION ERROR");
         }
         return $query->fetch(PDO::FETCH_ASSOC);
     }
@@ -474,8 +474,8 @@ class Insert {
         // execute query
         try {
             $query->execute();
-        } catch (PDOExcpetion $e) {
-            die("INTERNAL ERROR CONNECTION");
+        } catch (PDOException $e) {
+            die("INTERNAL CONNECTION ERROR");
         }
         return $query->fetch(PDO::FETCH_ASSOC); 
     }
@@ -557,7 +557,7 @@ class Insert {
      TEMP_NJOP_BUMI, TEMP_NJOP_BANGUNAN, TEMP_NJOP, 
      TEMP_NJOPTKP, TEMP_PBB_TERHUTANG, 
      TEMP_BESAR_DENDA, TEMP_FAKTOR_PENGURANG, 
-     TEMP_PBB_YG_HARUS_DIBAYAR, TEMP_TGL_JATUH_TEMPO) VALUES ('01', '01', :thn_p, :bundel_p, :no_urut_p, :prov, :dati2, :kec, :kel, :blok, :urut, :jns_op, :t_jns_data, :siklus_sppt, :nm_wp_sppt, :jalan_op, :blok_kav_no_op, :rw_op, :rt_op, :jln_wp_sppt, :blok_kav_no_wp_sppt, :rw_wp_sppt, :rt_wp_sppt, :kel_wp_sppt, :kota_wp_sppt, :kd_pos_wp_sppt, :npwp_sppt, :subjek_pajak_id, :kd_kls_tanah, :thn_awal_kls_tanah, :kd_kls_bng, :thn_awal_kls_bng, :luas_bumi_sppt, :luas_bng_sppt, :njop_bumi_sppt, :njop_bng_sppt, :njop_sppt, :njoptkp_sppt, :pbb_terhutang_sppt, :besar_denda, :faktor_pengurang_sppt, :pbb_yg_harus_dibayar_sppt, :tgl_jatuh_tempo_sppt)");
+     TEMP_PBB_YG_HARUS_DIBAYAR, TEMP_TGL_JATUH_TEMPO) VALUES ('01', '01', :thn_p, :bundel_p, :no_urut_p, :prov, :dati2, :kec, :kel, :blok, :urut, :jns_op, nvl(:t_jns_data, '-'), nvl(:siklus_sppt, '0'), nvl(:nm_wp_sppt, '-'), nvl(:jalan_op, '-'), nvl(:blok_kav_no_op, '00'), nvl(:rw_op, '00'), nvl(:rt_op, '00'), nvl(:jln_wp_sppt, '-'), nvl(:blok_kav_no_wp_sppt, '00'), nvl(:rw_wp_sppt, '00'), nvl(:rt_wp_sppt, '00'), nvl(:kel_wp_sppt, '-'), nvl(:kota_wp_sppt, '-'), nvl(:kd_pos_wp_sppt, '0000'), nvl(:npwp_sppt, '000'), nvl(:subjek_pajak_id, '000'), nvl(:kd_kls_tanah, '000'), nvl(:thn_awal_kls_tanah, '000'), nvl(:kd_kls_bng, '000'), nvl(:thn_awal_kls_bng, '0000'), nvl(:luas_bumi_sppt, '000'), nvl(:luas_bng_sppt, '000'), nvl(:njop_bumi_sppt, '000'), nvl(:njop_bng_sppt, '000'), nvl(:njop_sppt, '000'), nvl(:njoptkp_sppt, '000'), nvl(:pbb_terhutang_sppt, '000'), nvl(:besar_denda, '000'), nvl(:faktor_pengurang_sppt, '000'), nvl(:pbb_yg_harus_dibayar_sppt, '000'), nvl(:tgl_jatuh_tempo_sppt, '000'))");
         $query->bindParam(':thn_p', $thn_pelayanan);
         $query->bindParam(':bundel_p', $bundel_pelayanan);
         $query->bindParam(':no_urut_p', $no_urut_pelayanan);
@@ -602,8 +602,8 @@ class Insert {
         // execute query 
         try {
             $query->execute(); 
-        } catch(PDOExcpetion $e) {
-            die("INTERNAL ERROR CONNECTION");
+        } catch(PDOException $e) {
+            die("INTERNAL CONNECTION ERROR");
         }
     }
 }

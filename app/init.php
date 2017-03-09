@@ -11,7 +11,7 @@ function _getModel($modelName) {
 }
 spl_autoload_register('_getModel');
 try {
-    $Session = new Session;
+    $Session = new Session($link);
     $Users = new Users($link);
     $Getdata = new Getdata($link);
     $Insert  = new Insert($link);
