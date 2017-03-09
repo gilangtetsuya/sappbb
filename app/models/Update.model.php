@@ -8,7 +8,7 @@ class Update {
     // update no urut pst
     public function _updateNourutPst ($nourut) {
         // instance query 
-        $query = $this->db->prepare("UPDATE max_urut_pst SET no_urut_pelayanan = :urut");
+        $query = $this->db->prepare("UPDATE max_urut_pst SET no_urut_pelayanan = :urut WHERE kd_kanwil = '01'");
         $query->bindParam(':urut', $nourut);
         // execute query
         try {
@@ -20,7 +20,7 @@ class Update {
     // update bundel pst
     public function _updateBundelPst ($bundel) {
         // instance query
-        $query = $this->db->prepare("UPDATE max_urut_pst SET bundel_pelayanan = :bundel");
+        $query = $this->db->prepare("UPDATE max_urut_pst SET bundel_pelayanan = :bundel WHERE kd_kanwil = '01'");
         $query->bindParam(':bundel', $bundel);
         // execute query
         try {
@@ -32,7 +32,7 @@ class Update {
     // update tahun pst
     public function _updateTahunPst ($tahun) {
         // instance query 
-        $query = $this->db->prepare("UPDATE max_urut_pst SET thn_pelayanan = :thn");
+        $query = $this->db->prepare("UPDATE max_urut_pst SET thn_pelayanan = :thn WHERE kd_kanwil = '01'");
         $query->bindParam(':thn', $tahun);
         // execute query
         try {
