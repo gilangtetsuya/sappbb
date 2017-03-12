@@ -20,8 +20,8 @@ class Update {
     // update bundel pst
     public function _updateBundelPst ($bundel) {
         // instance query
-        $query = $this->db->prepare("UPDATE max_urut_pst SET bundel_pelayanan = :bundel WHERE kd_kanwil = '01'");
-        $query->bindParam(':bundel', $bundel);
+        $query = $this->db->prepare("UPDATE max_urut_pst SET bundel_pelayanan = :bundel_p, no_urut_pelayanan = '000' WHERE kd_kanwil = '01'");
+        $query->bindParam(':bundel_p', $bundel);
         // execute query
         try {
            $query->execute(); 

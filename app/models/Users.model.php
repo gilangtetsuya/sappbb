@@ -1,4 +1,5 @@
 <?php 
+date_default_timezone_set('Asia/Makassar');
 // Get users objek
 class Users {
     private $db;
@@ -182,9 +183,8 @@ class Users {
             die("INTERNAL ERROR CONNECTION!");
         }
     }
-    public function _addLogSession($id, $username) {
-        $timeLog = time();
-        $query = $this->db->prepare("INSERT INTO pst_log_session VALUES(:u_id, :name, :time)");
+    public function _addLogSession($id, $username, $timeLog) {
+        $query = $this->db->prepare("INSERT INTO pst_log_session VALUES(:u_id, :name, :time, 'on')");
         $query->bindParam(':u_id', $id);
         $query->bindParam(':name', $username);
         $query->bindParam(':time', $timeLog);
@@ -195,7 +195,7 @@ class Users {
         }
     }
     public function _cekLogExists($id, $username) {
-        $query = $this->db->prepare("SELECT COUNT(id) FROM pst_log_session WHERE id = :u_id AND username = :name");
+        $query = $this->db->prepare("SELECT COUNT(*) FROM pst_log_session WHERE id = :u_id AND username = :name");
         $query->bindParam(':u_id', $id);
         $query->bindParam(':name', $username);
         try {
@@ -210,6 +210,16 @@ class Users {
             die("INTERNAL ERROR CONNECTION!");
         }
     }
+    public function _getDataLogSession($timeLog) {
+        $query = $this->db->prepare("SELECT COUNT(*) FROM pst_log_session WHERE time_log = :u_time");
+        $query->bindParam(':u_time', $timeLog);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+        return $query;
+    }
     public function _updateLogSession($id, $time) {
         $query = $this->db->prepare("UPDATE pst_log_session SET time_log = :u_time WHERE id = :u_id");
         $query->bindParam(':u_time', $time);
@@ -219,6 +229,26 @@ class Users {
         } catch ( PDOException $e ) {
             die("INTERNAL ERROR CONNECTION!");
         }
+    }
+    public function _updateLogStatus($stat, $id) {
+        $query = $this->db->prepare("UPDATE pst_log_session SET status = :u_stat WHERE id = :u_id");
+        $query->bindParam(':u_stat', $stat);
+        $query->bindParam(':u_id', $id);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+    } 
+    public function _delLogByStatus($stat, $id) {
+        $query = $this->db->prepare("DELETE FROM pst_log_session WHERE status = :u_stat AND id = :u_id");
+        $query->bindParam(':u_stat', $stat);
+        $query->bindParam(':u_id', $id);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }    
     }
     public function _delLogSession($id, $time) {
         $query = $this->db->prepare("DELETE FROM pst_log_session WHERE id = :u_id AND time_log = :u_time");

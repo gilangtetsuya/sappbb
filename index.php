@@ -2,6 +2,10 @@
 require_once 'app/init.php';
 $Session->_logoutProtect(); 
 
+// if (count($_COOKIE) > 0) {
+//   $Users->_delLogSession($_COOKIE['user_id'], $_COOKIE['time']);
+// }
+
 if (isset($_POST['login'])) {
     $username = addslashes(strip_tags(trim($_POST['username'])));
     $password = addslashes(strip_tags(trim($_POST['password'])));
@@ -13,10 +17,15 @@ if (isset($_POST['login'])) {
         if ($login === false) {
            echo '<script>alert("Masukkan username atau password yang valid!");</script>';
         } else {
+           if ($Users->_cekLogExists($login, $username) === true) {
+                $Users->_updateLogStatus("off", $login);
+                $Users->_delLogByStatus("off", $login);
+           }
            $_SESSION['user_sap'] = $login;
            $_SESSION['user_name'] = $username;
-           $_SESSION['user_time'] = time();
-           $Users->_addLogSession($login, $username);
+           $_SESSION['user_time'] = date('H:i:s');
+           $_SESSION['limit_time'] = time();
+           $Users->_addLogSession($_SESSION['user_sap'], $_SESSION['user_name'], date('H:i:s'));
            $Users->_logUsers($login, "login ke sistem!");
            header('Location: views/');
         }

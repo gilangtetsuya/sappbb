@@ -68,8 +68,8 @@ function autotab(original,destination) {
        });
        inputEl[0].removeAttribute('disabled');
        inputEl[0].focus();
-    }
-
+    }   
+   
 /*
 | Validasi form
 */

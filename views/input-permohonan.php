@@ -1,8 +1,9 @@
 <?php 
 require_once '../app/init.php';
-$data = [
-   'title' => 'Input Permohonan'
-];
+$data = array(
+   'title' => 'Input Permohonan',
+   'meta_time' => 'true'
+);
 $refPelayanan = $Getdata->_getRefPelayanan();
 $maxUrutPst = $Getdata->_getMaxUrutPst();
 function autonumber($nilai, $panjang_kode, $panjang_angka) {
@@ -12,11 +13,12 @@ function autonumber($nilai, $panjang_kode, $panjang_angka) {
   $nilai_baru = $kode.$angka_baru;
   return $nilai_baru;
 } 
+$maxUrutPelayanan = $Getdata->_countUrutPst($maxUrutPst['THN_PELAYANAN'], $maxUrutPst['BUNDEL_PELAYANAN']); 
 $noUrut = autonumber($maxUrutPst['NO_URUT_PELAYANAN'], 0, 3);
 $bundelPst = $maxUrutPst['BUNDEL_PELAYANAN'];
 $tahun = date('Y');
 if ($noUrut > 200) {
-   $bundel = autonumber($maxUrutPst['BUNDEL_PELAYANAN'], 0, 3);
+   $bundel = autonumber($maxUrutPst['BUNDEL_PELAYANAN'], 0, 4);
    $Update->_updateBundelPst($bundel);
    header('location: input-permohonan.php');
 }

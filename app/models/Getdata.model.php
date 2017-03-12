@@ -29,9 +29,33 @@ class Getdata {
         $kd_blok = $data['kd_blok'];
         $no_urut = $data['no_urut'];
         $kd_jns_op = $data['kd_jns_op'];
-        $thn_pajak_sppt = $data['thn_pajak'];
         // instance query 
-        $query = $this->db->prepare("SELECT * FROM sppt a JOIN dat_objek_pajak b ON a.kd_propinsi||a.kd_dati2||a.kd_kecamatan||a.kd_kelurahan||a.kd_blok||a.no_urut||a.kd_jns_op = b.subjek_pajak_id JOIN dat_subjek_pajak c ON b.subjek_pajak_id = c.subjek_pajak_id WHERE a.kd_propinsi = :prov AND a.kd_dati2 = :dati2 AND a.kd_kecamatan = :kec AND a.kd_kelurahan = :kel AND a.kd_blok = :blok AND a.no_urut = :urut AND a.kd_jns_op = :jns_op AND a.thn_pajak_sppt = :thn_pajak");
+        $query = $this->db->prepare("SELECT * FROM dat_objek_pajak a INNER JOIN dat_subjek_pajak b ON a.subjek_pajak_id = b.subjek_pajak_id WHERE a.kd_propinsi = :prov AND a.kd_dati2 = :dati2 AND a.kd_kecamatan = :kec AND a.kd_kelurahan = :kel AND a.kd_blok = :blok AND a.no_urut = :urut AND a.kd_jns_op = :jns_op");
+        $query->bindParam(':prov', $kd_prov);
+        $query->bindParam(':dati2', $kd_dati2);
+        $query->bindParam(':kec', $kd_kec);
+        $query->bindParam(':kel', $kd_kel);
+        $query->bindParam(':blok', $kd_blok);
+        $query->bindParam(':urut', $no_urut);
+        $query->bindParam(':jns_op', $kd_jns_op);
+        // execute query 
+        try {
+           $query->execute();
+        } catch(PDOException $e) {
+           die("INTERNAL ERROR CONNECTION");
+        }
+        return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    public function cek_data_sppt ($data) {
+        $kd_prov = $data['kd_prov'];
+        $kd_dati2 = $data['kd_dati2'];
+        $kd_kec = $data['kd_kec'];
+        $kd_kel = $data['kd_kel'];
+        $kd_blok = $data['kd_blok'];
+        $no_urut = $data['no_urut'];
+        $kd_jns_op = $data['kd_jns_op'];
+        $thn_pajak_sppt = $data['thn_pajak']; 
+        $query = $this->db->prepare("SELECT * FROM sppt WHERE kd_propinsi = :prov AND kd_dati2 = :dati2 AND kd_kecamatan = :kec AND kd_kelurahan = :kel AND kd_blok = :blok AND no_urut = :urut AND kd_jns_op = :jns_op AND thn_pajak_sppt = :thn_pajak");   
         $query->bindParam(':prov', $kd_prov);
         $query->bindParam(':dati2', $kd_dati2);
         $query->bindParam(':kec', $kd_kec);
@@ -44,9 +68,9 @@ class Getdata {
         try {
            $query->execute();
         } catch(PDOException $e) {
-           die("INTERNAL ERROR CONNECTION");
+           die($e->getMessage());
         }
-        return $query->fetch(PDO::FETCH_ASSOC);
+        return $query;
     }
     // cek data op bersama 
     public function cek_op_bersama ($data) {
@@ -310,5 +334,16 @@ class Getdata {
             die("INTERNAL ERROR CONNECTION!");
         }
         return $query->fetch(PDO::FETCH_ASSOC);
+    }
+    public function _countUrutPst($tahun, $bundel) {
+        $query = $this->db->prepare("SELECT MAX(no_urut_pelayanan) AS max_urut FROM pst_permohonan WHERE thn_pelayanan = :thn_p AND bundel_pelayanan = :bundel_p");
+        $query->bindParam(':thn_p', $tahun);
+        $query->bindParam(':bundel_p', $bundel);
+        try {
+            $query->execute();
+        }  catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+         return $query->fetch(PDO::FETCH_ASSOC);
     }
 }

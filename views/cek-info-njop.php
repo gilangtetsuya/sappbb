@@ -86,11 +86,19 @@ get_sidenav();
            <td width="50%"></td>   
           </tr>
           <tr>
+           <td>Kecamatan :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
+           <td>Kelurahan :</td>
+           <td width="50%"></td>   
+          </tr>
+          <tr>
            <td>Luas Bumi :</td>
            <td width="50%"></td>   
           </tr>
           <tr>
-           <td>Njop Bumi per m2 :</td>
+           <td>Njop Bumi :</td>
            <td width="50%"></td>   
           </tr>
           <tr>
@@ -98,7 +106,7 @@ get_sidenav();
            <td width="50%"></td>   
           </tr>
           <tr>
-           <td>Njop Bangunan per m2 :</td>
+           <td>Njop Bangunan :</td>
            <td width="50%"></td>   
           </tr>
           <tr>

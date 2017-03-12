@@ -5,7 +5,9 @@ require_once '../app/models/Users.model.php';
 $session = new Session($link);
 $users = new Users($link);
 $session->_loginProtect();
-if ($users->_cekLogExists($_SESSION['user_sap'], $_SESSION['user_name']) === false) {
+$row2 = $users->_getDataLogSession($_SESSION['user_time']);
+$dataSession = $row2->fetchColumn();
+if ($dataSession == 0) {
     $session->_loginExists();
 } else {
     $session->_loginLimitTime();
@@ -19,7 +21,10 @@ $row = $users->_getDataUsersById($_SESSION['user_sap']);
    <meta name="author" content="Gilang Anugrah">
    <meta http-equiv="X-UA-Compatible" content="IE=edge, Chrome=1">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <title>SAP | <?php echo $data['title']; ?></title>
+   <?php if (!empty($data['meta_time']) && $data['meta_time'] == 'true'): ?>
+    <meta http-equiv="refresh" content="60" />
+   <?php endif; ?>
+   <title>SAP | <?php echo $data['title' ]; ?></title>
    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
    <link rel="stylesheet" href="../assets/plugin/font-awesome/css/font-awesome.min.css">
