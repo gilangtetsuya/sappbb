@@ -13,7 +13,7 @@ get_sidenav();
    </div> 
    <div class="container">
     <div class="row">
-     <div class="col-md-5">
+     <div class="col-sm-4">
       <form method="post">
        <div class="form-group">
         <select id="method" class="form-control input-sm">
@@ -54,7 +54,7 @@ get_sidenav();
           <div class="col-xs-2-7">
           <input type="text" name="kd_blok" maxlength="3" id="blok" class="form-control input-sm" placeholder="Blok" disabled>   
          </div>  
-         <div class="col-xs-2-8">
+         <div class="col-xs-2-9">
           <input type="text" name="no_urut" maxlength="4" id="no_urut" class="form-control input-sm" placeholder="No Urut" disabled>   
          </div>  
          <div class="col-xs-2">

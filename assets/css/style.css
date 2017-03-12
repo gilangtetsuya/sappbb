@@ -505,6 +505,9 @@ div.dataTables_wrapper div.dataTables_filter {
         padding: 3px;
         text-transform: uppercase;
     }
+    .col-xs-2-9 {
+        width: 19.55557%;
+    }
 }
 @media screen and (max-width: 1550px) {
     .pull-right > span:nth-child(1) {
@@ -533,6 +536,12 @@ div.dataTables_wrapper div.dataTables_filter {
     }
     table.table > tbody > tr > td {
         font-size: 75%;
+    }
+    .col-xs-2-9 {
+        width: 21.55557%;
+    }
+    .col-xs-2-7 {
+        width: 19.33337%;
     }
 }
 /* media query for mobile display */
