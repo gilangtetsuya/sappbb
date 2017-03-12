@@ -14,7 +14,8 @@ function autonumber($nilai, $panjang_kode, $panjang_angka) {
   return $nilai_baru;
 } 
 $maxUrutPelayanan = $Getdata->_countUrutPst($maxUrutPst['THN_PELAYANAN'], $maxUrutPst['BUNDEL_PELAYANAN']); 
-$noUrut = autonumber($maxUrutPst['NO_URUT_PELAYANAN'], 0, 3);
+$nourutPst = ($maxUrutPelayanan['MAX_URUT'] == "") ? "000" : $maxUrutPelayanan['MAX_URUT'];
+$noUrut = autonumber($nourutPst, 0, 3);
 $bundelPst = $maxUrutPst['BUNDEL_PELAYANAN'];
 $tahun = date('Y');
 if ($noUrut > 200) {

@@ -39,5 +39,11 @@ $result = array(
    number_format($njop_pbb)
 );
 
-echo json_encode($result);
+
+if ($data1['NM_WP'] == "" && $data1['JALAN_WP'] == "" && $data1['JALAN_OP'] == "") {
+    echo "false";
+} else {
+    echo json_encode($result);
+}
+
 ?>

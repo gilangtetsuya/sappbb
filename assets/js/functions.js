@@ -40,17 +40,19 @@ function autotab(original,destination) {
             var url  = "../app/lib-ajax/_getDataNjop.php?" + data;
             xhr.open("GET", url, true);
             xhr.onreadystatechange = function () {
-                var poll = window.setInterval(function () {
-                    if (xhr.readyState == 4 && xhr.status == 200) {         
-                    window.clearInterval(poll);
+              if (xhr.readyState == 4 && xhr.status == 200) {  
+                if (xhr.responseText == "false") {
+                    alert("Data sppt tidak ditemukan!");
+                } else {
+                    var poll = window.setInterval(function () {                   
+                        window.clearInterval(poll);
                         var res = JSON.parse(xhr.responseText);
                         for (var i = 0; i < tableEl.length; i++) {
                             tableEl[i].innerHTML = res[i];
-                        }
-                    } else  {
-                        console.error("Error message: ", xhr.statusText);
-                    }
-                }, 40);
+                        }           
+                    }, 30);
+                }
+              }  
             }  
             xhr.send();
        }
