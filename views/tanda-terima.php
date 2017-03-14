@@ -146,7 +146,7 @@ if ($data['kd_jns_pelayanan'] == '01') {
    <meta http-equiv="X-UA-Compatible" content="IE=edge, Chrome=1">
    <meta name="viewport" content="width=device-width, minimum-scale=1">
    <title>Tanda Terima</title>
-   <link rel="stylesheet" href="../assets/css/print.css">	
+   <link rel="stylesheet" href="../assets/css/print.css" media="all">	
    <link rel="stylesheet" href="../assets/plugin/font-awesome/css/font-awesome.min.css">
  </head>	
  <body>

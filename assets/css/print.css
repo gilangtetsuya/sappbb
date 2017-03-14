@@ -17,7 +17,8 @@ h1,h2,h3,h4,h5 {
 	margin: 10px auto;
 }
 .head-title {
-	border-bottom: 1px dashed #444;
+	display: block !important;
+	border-bottom: 1px dashed #444 !important;
 	margin-bottom: 10px;
 	padding-bottom: 6px;
 }
@@ -38,7 +39,7 @@ h1,h2,h3,h4,h5 {
     float: right;
     position: relative;
     width: 100%;
-    border-bottom: 1px dashed #444;
+    border-bottom: 1px dashed #444 !important;
     margin-bottom: 8px;
 }
 .left-area .inner {

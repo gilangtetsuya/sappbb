@@ -244,7 +244,7 @@ class Getdata {
     }
     // Get data berkas like nama pemohon
     public function _getDataBerkasLikeNama($nama_pemohon) {
-        $query = $this->db->prepare("SELECT * FROM pst_permohonan a JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.nama_pemohon LIKE '%$nama_pemohon%'");
+        $query = $this->db->prepare("SELECT * FROM pst_permohonan a INNER JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.nama_pemohon LIKE '%$nama_pemohon%'");
         try {
            $query->execute();
         } catch(PDOException $e) {
@@ -254,7 +254,7 @@ class Getdata {
     }
     // Get data berkas like nomor peleyanan
     public function _getDataBerkasLikeNoPelayanan($thn, $bundel, $urut) {
-        $query = $this->db->prepare("SELECT * FROM pst_permohonan a JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.thn_pelayanan LIKE '$thn%' AND a.bundel_pelayanan LIKE '$bundel%' AND a.no_urut_pelayanan LIKE '$urut%'");
+        $query = $this->db->prepare("SELECT * FROM pst_permohonan a INNER JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.thn_pelayanan LIKE '$thn%' AND a.bundel_pelayanan LIKE '$bundel%' AND a.no_urut_pelayanan LIKE '$urut%'");
         try {
            $query->execute();
         } catch(PDOException $e) {
@@ -264,7 +264,7 @@ class Getdata {
     }
     // Get data berksa like NOP
     public function _getDataBerkasLikeNop($nop) {
-        $query = $this->db->prepare("SELECT * FROM pst_permohonan a JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE b.kd_propinsi_pemohon||b.kd_dati2_pemohon||b.kd_kecamatan_pemohon||b.kd_kelurahan_pemohon||b.kd_blok_pemohon||b.no_urut_pemohon||b.kd_jns_op_pemohon LIKE '%$nop%'");
+        $query = $this->db->prepare("SELECT * FROM pst_permohonan a INNER JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE b.kd_propinsi_pemohon||b.kd_dati2_pemohon||b.kd_kecamatan_pemohon||b.kd_kelurahan_pemohon||b.kd_blok_pemohon||b.no_urut_pemohon||b.kd_jns_op_pemohon LIKE '%$nop%'");
         try {
            $query->execute();
         } catch(PDOException $e) {
@@ -274,7 +274,7 @@ class Getdata {
     }
     // Get data berkas like tanggal masuk berkas
     public function _getDataBerkasLikeTglMasuk($tgl1, $tgl2) {
-        $query = $this->db->prepare("SELECT * FROM pst_permohonan a JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.tgl_terima_dokumen_wp >= to_date(:tgl_1, 'DD-MM-YYYY') AND a.tgl_terima_dokumen_wp <= to_date(:tgl_2, 'DD-MM-YYYY')");
+        $query = $this->db->prepare("SELECT * FROM pst_permohonan a INNER JOIN pst_detail b ON a.thn_pelayanan||a.bundel_pelayanan||a.no_urut_pelayanan = b.thn_pelayanan||b.bundel_pelayanan||b.no_urut_pelayanan WHERE a.tgl_terima_dokumen_wp >= to_date(:tgl_1, 'DD-MM-YYYY') AND a.tgl_terima_dokumen_wp <= to_date(:tgl_2, 'DD-MM-YYYY')");
         $query->bindParam(':tgl_1', $tgl1);
         $query->bindParam(':tgl_2', $tgl2);
         try {

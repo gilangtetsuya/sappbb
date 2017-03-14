@@ -220,6 +220,16 @@ class Users {
         }
         return $query;
     }
+    public function _getStatusLogByName($username) {
+        $query = $this->db->prepare("SELECT COUNT(*) FROM pst_log_session WHERE username = :name");
+        $query->bindParam(':name', $username);
+        try {
+            $query->execute();
+        } catch ( PDOException $e ) {
+            die("INTERNAL ERROR CONNECTION!");
+        }
+        return $query->fetchColumn();
+    }
     public function _updateLogSession($id, $time) {
         $query = $this->db->prepare("UPDATE pst_log_session SET time_log = :u_time WHERE id = :u_id");
         $query->bindParam(':u_time', $time);
